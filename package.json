@@ -1,0 +1,24 @@
+{
+  "name": "pouroverhelper",
+  "version": "1.0.0",
+  "description": "Web App dedicated to help with the art of making coffee.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SteakPotato/pouroverhelper.git"
+  },
+  "author": "Shawn Tremblay - Voltaire",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SteakPotato/pouroverhelper/issues"
+  },
+  "homepage": "https://github.com/SteakPotato/pouroverhelper#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15"
+  }
+}

@@ -1,0 +1,3 @@
+--Nodemon
+to start : npm start
+to stop : ctrl + c
