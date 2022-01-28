@@ -1,0 +1,125 @@
+
+window.addEventListener('load',() => {
+    let brewSelect = document.querySelector('#brew-methods');
+    
+    if(window.localStorage.getItem('brewMode')){
+        brewSelect.value =window.localStorage.getItem('brewMode');
+    }
+    setTemplates(brewSelect);
+    brewSelect.addEventListener('change',(e) => {
+        let brewModeValue = e.target.value;
+        localStorage.setItem('brewMode', brewModeValue);
+        setTemplates(brewSelect);
+
+    })
+
+
+})
+let setTemplates = (brewSelect) => {
+    let templateName = '#' + brewSelect.value;
+    let brewTemplate = document.querySelector(templateName).innerHTML;
+    console.log(brewTemplate);
+    document.querySelector('#test').innerHTML = brewTemplate;
+    getData(brewSelect);
+    addBrewListener(brewSelect);
+}
+//Avant de enlever le template il faudrai sauvgarder les info dans local storage
+//Avant mettre le template il faudrai prendre les info du local storage
+
+let saveData = (brewSelect) => {
+    let coffeeInput = document.querySelector('#coffeeWeight-input');
+    let ratioInput = document.querySelector('#brewRatio-input');
+
+    if(brewSelect.value == "hoffman"){
+        localStorage.setItem('hoffman-coffeeInput', coffeeInput.value);
+        localStorage.setItem('hoffman-ratioInput', ratioInput.value);
+    }
+
+}
+let getData = (brewSelect) => {
+    let coffeeInput = document.querySelector('#coffeeWeight-input');
+    let ratioInput = document.querySelector('#brewRatio-input');
+
+    switch(brewSelect.value) {
+        case "hoffman":
+            coffeeInput.value = localStorage.getItem('hoffman-coffeeInput', coffeeInput.value);
+            ratioInput.value = localStorage.getItem('hoffman-ratioInput', ratioInput.value);
+          break;
+        case "rao":
+          // code block
+          break;
+        case "kasuya":
+          break;
+        case "osmotic":
+          break;
+        }
+
+}
+
+let calculateBrew = (brewSelect) => {
+    let bloomMultiSize = 2;
+    let brewSum = 0;
+    let total = 0;
+    let calcuTemp;
+
+    let coffeeInput = document.querySelector('#coffeeWeight-input');
+    let ratioInput = document.querySelector('#brewRatio-input');
+
+    let bloom = document.querySelector('#bloom');
+    let bloomTotal = document.querySelector('#bloom-total');
+    let first = document.querySelector('#first-pour');
+    let firstTotal = document.querySelector('#first-pour-total');
+    let second = document.querySelector('#second-pour');
+    let secondTotal = document.querySelector('#second-pour-total');
+    let brewTotal = document.querySelector('#brewSize');
+    
+
+
+    //brew size 
+    total = roundTo1Decimal(coffeeInput.value * ratioInput.value);
+    brewTotal.textContent = total + " g";
+
+    //bloom
+    calcuTemp = roundTo1Decimal(bloomMultiSize * coffeeInput.value);
+    bloom.textContent = calcuTemp + " g";
+
+    brewSum += calcuTemp;
+    bloomTotal.textContent = "Total " + brewSum + " g";
+
+    //first pour
+    calcuTemp = roundTo1Decimal(total * 0.6);
+    first.textContent = calcuTemp + " g";
+
+    brewSum += calcuTemp;
+    firstTotal.textContent = "Total " +brewSum + " g";
+    
+    //second pour
+    calcuTemp = roundTo1Decimal(total - brewSum);
+    second.textContent = calcuTemp + " g";
+
+    brewSum += calcuTemp;
+    secondTotal.textContent = "Total " +roundTo1Decimal(brewSum) + " g";
+
+
+    if(brewSelect.value === "hoffman"){
+
+    }
+
+}
+let addBrewListener = (brewSelect) => {
+    let coffeeInput = document.querySelector('#coffeeWeight-input');
+    let ratioInput = document.querySelector('#brewRatio-input');
+    calculateBrew(brewSelect);
+    coffeeInput.addEventListener('input',() => {
+        calculateBrew(brewSelect);
+        saveData(brewSelect);
+    })
+    ratioInput.addEventListener('input',() => {
+        calculateBrew(brewSelect);
+        saveData(brewSelect);
+    })
+    
+}
+let roundTo1Decimal = (n) => {
+    return Math.round(n * 10) / 10;
+}
