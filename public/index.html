@@ -10,13 +10,22 @@
 </head>
 <body>
     <header>
-        <div class="header-container">
-            <a href="#"><h3>Pourover-Helper</h3></a>
-            <nav>
-                <a href="#"><h4>About</h4></a>
-            </nav>
+        <div class="header-container" id="brand"><a href="/">Pourover Helper</a></div>
+        <nav id="menu">
+          <ul>
+            <li><a href="/about">About</a></li>
+          </ul>
+        </nav>
+
+        <div id="hamburger-icon">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+          <ul class="mobile-menu">
+            <li><a href="/about">About</a></li>
+          </ul>
         </div>
-    </header>
+      </header>
 
     <main>
         <div class="main-container">
@@ -35,8 +44,8 @@
 </body>
 <template id="hoffman">
     <div class="brew-container">
-        <h1 class = 'brew-title'>James Hoffman's Recipe</h1>
-        <a href="https://www.youtube.com/watch?v=AI4ynXzkSQo&t=1s" class="video">
+        <h1 class = 'brew-title'>James Hoffman's V60</h1>
+        <a href="https://www.youtube.com/watch?v=AI4ynXzkSQo&t=1s" class="video" target="_blank" rel="noopener noreferrer">
             <img src="img/hoffman.webp" alt="">
             <div class="video-container">
                 <p class="video-title">The Ultimate V60 Technique</p>

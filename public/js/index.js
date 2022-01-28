@@ -52,8 +52,7 @@ let getData = (brewSelect) => {
           break;
         case "osmotic":
           break;
-        }
-
+    }
 }
 
 let calculateBrew = (brewSelect) => {
