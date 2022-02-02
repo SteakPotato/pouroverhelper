@@ -4,9 +4,9 @@ window.addEventListener('load',() => {
     
     if(window.localStorage.getItem('brewMode')){
         brewSelect.value =window.localStorage.getItem('brewMode');
+        setTemplates(brewSelect);
     }
-    setTemplates(brewSelect);
-    brewSelect.addEventListener('change',(e) => {
+    brewSelect.addEventListener('input',(e) => {
         let brewModeValue = e.target.value;
         localStorage.setItem('brewMode', brewModeValue);
         setTemplates(brewSelect);
@@ -42,8 +42,10 @@ let getData = (brewSelect) => {
 
     switch(brewSelect.value) {
         case "hoffman":
-            coffeeInput.value = localStorage.getItem('hoffman-coffeeInput', coffeeInput.value);
-            ratioInput.value = localStorage.getItem('hoffman-ratioInput', ratioInput.value);
+            if(localStorage.getItem('hoffman-coffeeInput')){
+                coffeeInput.value = localStorage.getItem('hoffman-coffeeInput', coffeeInput.value);
+                ratioInput.value = localStorage.getItem('hoffman-ratioInput', ratioInput.value);
+            }
           break;
         case "rao":
           // code block
@@ -56,6 +58,9 @@ let getData = (brewSelect) => {
 }
 
 let calculateBrew = (brewSelect) => {
+    let text = "Total: "
+    let unit = " g"
+    
     let bloomMultiSize = 2;
     let brewSum = 0;
     let total = 0;
@@ -76,28 +81,28 @@ let calculateBrew = (brewSelect) => {
 
     //brew size 
     total = roundTo1Decimal(coffeeInput.value * ratioInput.value);
-    brewTotal.textContent = total + " g";
+    brewTotal.textContent = total + unit;
 
     //bloom
     calcuTemp = roundTo1Decimal(bloomMultiSize * coffeeInput.value);
-    bloom.textContent = calcuTemp + " g";
+    bloom.textContent = calcuTemp + unit;
 
     brewSum += calcuTemp;
-    bloomTotal.textContent = "Total " + brewSum + " g";
+    bloomTotal.textContent = text + brewSum + unit;
 
     //first pour
     calcuTemp = roundTo1Decimal(total * 0.6);
-    first.textContent = calcuTemp + " g";
+    first.textContent = calcuTemp + unit;
 
     brewSum += calcuTemp;
-    firstTotal.textContent = "Total " +brewSum + " g";
+    firstTotal.textContent = text  +brewSum + unit;
     
     //second pour
     calcuTemp = roundTo1Decimal(total - brewSum);
-    second.textContent = calcuTemp + " g";
+    second.textContent = calcuTemp + unit;
 
     brewSum += calcuTemp;
-    secondTotal.textContent = "Total " +roundTo1Decimal(brewSum) + " g";
+    secondTotal.textContent = text +roundTo1Decimal(brewSum) + unit;
 
 
     if(brewSelect.value === "hoffman"){
@@ -108,6 +113,11 @@ let calculateBrew = (brewSelect) => {
 let addBrewListener = (brewSelect) => {
     let coffeeInput = document.querySelector('#coffeeWeight-input');
     let ratioInput = document.querySelector('#brewRatio-input');
+    let subRatio =document.querySelector('#sub-ratio');
+    let addRatio =document.querySelector('#add-ratio');
+    let subcoffee = document.querySelector('#sub-coffee');
+    let addcoffee = document.querySelector('#add-coffee');
+
     calculateBrew(brewSelect);
     coffeeInput.addEventListener('input',() => {
         calculateBrew(brewSelect);
@@ -116,6 +126,22 @@ let addBrewListener = (brewSelect) => {
     ratioInput.addEventListener('input',() => {
         calculateBrew(brewSelect);
         saveData(brewSelect);
+    })
+    subRatio.addEventListener('click',() => {
+        ratioInput.value--;
+        ratioInput.dispatchEvent(new Event('input'));
+    })
+    addRatio.addEventListener('click',() => {
+        ratioInput.value++;
+        ratioInput.dispatchEvent(new Event('input'));
+    })
+    subcoffee.addEventListener('click',() => {
+        coffeeInput.value--;
+        coffeeInput.dispatchEvent(new Event('input'));
+    })
+    addcoffee.addEventListener('click',() => {
+        coffeeInput.value++;
+        coffeeInput.dispatchEvent(new Event('input'));
     })
     
 }

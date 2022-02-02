@@ -11,6 +11,7 @@
 <body>
     <header>
         <div class="header-container" id="brand"><a href="/">Pourover Helper</a></div>
+        <img src="img/icon/test-1.png" alt="">
         <nav id="menu">
           <ul>
             <li><a href="/about">About</a></li>
@@ -25,89 +26,136 @@
             <li><a href="/about">About</a></li>
           </ul>
         </div>
-      </header>
+    </header>
+    <div class = landing>
+        <div class="landing-container">
+            <div>Calculate pourover's and more</div>
+
+        </div>
+        
+    </div>
 
     <main>
         <div class="main-container">
-            <select name="brew" id="brew-methods">
-                <option value="" selected disabled hidden>Choose here</option>
-                <option value="hoffman">James Hoffman</option>
-                <option value="rao">Scott Rao</option>
-                <option value="kasuya">Tetsu Kasuya</option>
-                <option value="osmotic">Osmotic Flow</option>
-            </select>
-            <div id = "test">Test</div>
+            <div class="selection">
+                <h4 class="choose-full">Choose Brewing Method: </h4>
+                <h4 class="choose-short-test">Method:</h4>
+                <div class = 'select'>
+                    <select name="brew" id="brew-methods">
+                        <option value="" selected disabled hidden>Choose here</option>
+                        <option value="hoffman">James Hoffman</option>
+                        <option value="rao">Scott Rao</option>
+                        <option value="kasuya">Tetsu Kasuya</option>
+                        <option value="osmotic">Osmotic Flow</option>
+                    </select>
+                </div>
 
+            </div>
+            <div id = "test">Test</div>
         </div>
 
     </main>
+    <footer>
+        <div class="footer-container">
+            <div>© 2022 Pourover-Helper</div>
+        </div>
+    </footer>
 </body>
 <template id="hoffman">
     <div class="brew-container">
-        <h1 class = 'brew-title'>James Hoffman's V60</h1>
-        <a href="https://www.youtube.com/watch?v=AI4ynXzkSQo&t=1s" class="video" target="_blank" rel="noopener noreferrer">
-            <img src="img/hoffman.webp" alt="">
-            <div class="video-container">
-                <p class="video-title">The Ultimate V60 Technique</p>
+        <div class="brew-info-container">
+            <h3 class = 'brew-title'>James Hoffman's V60</h3>
+            <a href="https://www.youtube.com/watch?v=AI4ynXzkSQo&t=1s" class="video" target="_blank" rel="noopener noreferrer">
+                <img src="img/hoffman.webp" alt="">
+                <div class="video-container">
+                    <p class="video-title">The Ultimate V60 Technique</p>
+                    <p class ='video-title video-site'>youtube.com</p>
+                </div>
+            </a>
+            
+        </div>
+        
+        <div class="brew-inputs-container">
+            <h3>Parameters</h3>
+            <p>Enter how much you wish to brew.</p>
+            <div class="input-container">
+
+                
+                <div class="input">
+                    <div>
+                        <a href="javascript: void(0)" id = 'sub-coffee'>
+                            <img src="img/icon/subtract-24.png" class='plus-icon' width="24" height="24">
+
+                        </a>
+                        <input type="number" value="30" class="brew-inputs"id="coffeeWeight-input">
+                        <a href="javascript: void(0)" id = 'add-coffee'>
+                            <img src="img/icon/plus-math-24.png" class='plus-icon' width="24" height="24">
+                        </a>
+                    </div>
+                    <label for="coffeeWeight-input">Coffee (g)</label>
+                </div>
+                <div class="input">
+                    <div>
+                        <a href="javascript: void(0)"id = 'sub-ratio'>
+                            <img src="img/icon/subtract-24.png" class='plus-icon'width="24" height="24">
+                        </a>
+                        <input type="number" value="16.7" class="brew-inputs" id="brewRatio-input" >
+                        <a href="javascript: void(0)"id = 'add-ratio'>
+                            <img src="img/icon/plus-math-24.png"  class='plus-icon' width="24" height="24">
+                        </a>
+                    </div>
+                    <label for="brewRatio-input">1 Part Coffee to Water Ratio (16.7 recommended)</label>
+                </div>
+        
+
             </div>
-        </a>
-        
-        
-        <div class="brew-variable-text">Coffee weight in g</div>
-        <input type="number" value="30" class="brew-inputs"id="coffeeWeight-input">
-        <p class="units">g</p>
-        
-        <div class="brew-variable-text">Coffe to water Ratio (1:16 recomended)</div>
-        <input type="number" value="1" class="brew-inputs-greyed"disabled >
-        <input type="number" value="16.6" class="brew-inputs" id="brewRatio-input">
-        <p class="units"></p>
+        </div>
         
         <div class="brew-breakdown-container">
             <h3>Breakdown</h3>
-            <p>
+            <div class='line-breakdown-container'>
                 <div class="line-breakdown">
                     <span class="brew-variable-text"> Brew Size: </span>
                     <span class="units" id="brewSize"> 200 ml</span>
-                </div>
-                <div class="line-breakdown">
-                    <span class="brew-variable-text">Grind size: </span>
-                    <span class="units">medium fine</span>
-                    
                 </div>
                 <div class="line-breakdown">
                     <span class="brew-variable-text">Brew time : </span>
                     <span class="units">3:30</span>
                     
                 </div>
-
-            </p>
+                <div class="line-breakdown">
+                    <span class="brew-variable-text">Grind size: </span>
+                    <span class="units">medium fine</span>
+                    
+                </div>
+            </div>
             
 
-            <p class="brew-instruction-line">
-                <span class = brew-time>0:00</span>
-                <span class="brew-line">-- For bloom add: </span>
+            <div class="brew-instruction-line">
+                <span class = "brew-time">0:00</span>
+                <span class="brew-line">For bloom add: </span>
                 <span class="brew-line" id="bloom">144 </span>
-                <span class="brew-line" id="bloom">and wait 30s -- </span>
+                <span class="brew-line" id="bloom">and wait 30s.</span>
                 <span class = brew-total id="bloom-total"></span>
-            </p>
-            <p class="brew-instruction-line">
-                <span class = brew-time>0:45</span>
-                <span class="brew-line">-- Pour: </span>
+            </div>
+            <div class="brew-instruction-line">
+                <span class = "brew-time">0:45</span>
+                <span class="brew-line">Pour: </span>
                 <span class="brew-line" id="first-pour"></span>
-                <span class="brew-line" id="bloom">in the next 30s -- </span>
+                <span class="brew-line" id="bloom">in the next 30s. </span>
                 <span class = brew-total id="first-pour-total"></span>
-            </p>
-            <p class="brew-instruction-line">
-                <span class = brew-time>1:15</span>
-                <span class="brew-line">-- Pour: </span>
+            </div>
+            <div class="brew-instruction-line">
+                <span class = "brew-time">1:15</span>
+                <span class="brew-line">Pour: </span>
                 <span class="brew-line" id="second-pour"></span>
-                <span class="brew-line" id="bloom">in the next 30s -- </span>
-                <span class = brew-total id="second-pour-total"></span>
-            </p>
-            <p class="brew-instruction-line">
-                <span class = brew-time>1:45 </span>
-                <span class="brew-line">-- Stir 1x clockwise and 1x anticlockwise, allow V60 to drain a little, give V60 a gentle swirl and Let brew drawdown</span>
-            </p>
+                <span class="brew-line" id="bloom">in the next 30s.</span>
+                <span class = "brew-total" id="second-pour-total"></span>
+            </div>
+            <div class="brew-instruction-line">
+                <span class = "brew-time">1:45 </span>
+                <span class="brew-line">Stir 1x clockwise and 1x anticlockwise, allow V60 to drain a little, give V60 a gentle swirl and Let brew drawdown.</span>
+            </div>
   
 
         </div>
