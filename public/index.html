@@ -10,8 +10,10 @@
 </head>
 <body>
     <header>
-        <div class="header-container" id="brand"><a href="/">Pourover Helper</a></div>
-        <img src="img/icon/test-1.png" alt="">
+        <a href="/" class="header-container" id="brand">
+            <img src="img/icon/pourover.png" alt="" width="50" height="50">
+            <div >Pourover Helper</div>
+        </a>
         <nav id="menu">
           <ul>
             <li><a href="/about">About</a></li>
@@ -28,18 +30,27 @@
         </div>
     </header>
     <div class = landing>
-        <div class="landing-container">
-            <div>Calculate pourover's and more</div>
+        <div class="landing-container-full">
+            <div class="landing-container">
+                <div>
+                    <h1 class = "h1-small">POUROVER COFFEE BREWING CALCULATOR</h1>
+                    <h2 class = "h2-small"> SIMPLE CALCULATOR AND EASY GUIDE</h2>
+                </div>
+            </div>
+            <div class = 'landing-container'>
+                <div>
+                    <p>Based on the technique of your choice, swiftly calculate brew ratios following a quick step by step guide. Use this to calcute how much water you need for a brew.</p>
+                </div>
+            </div>
 
         </div>
-        
     </div>
 
     <main>
         <div class="main-container">
             <div class="selection">
-                <h4 class="choose-full">Choose Brewing Method: </h4>
-                <h4 class="choose-short-test">Method:</h4>
+                <h4 class="choose-full">Brewing Technique: </h4>
+                <h4 class="choose-short-test">Technique:</h4>
                 <div class = 'select'>
                     <select name="brew" id="brew-methods">
                         <option value="" selected disabled hidden>Choose here</option>
@@ -72,6 +83,7 @@
                     <p class ='video-title video-site'>youtube.com</p>
                 </div>
             </a>
+            <p class='video-desc'>"This is my recommended technique for making coffee with the Hario V60, and any other cone-shaped brewer with a large open area."</p>
             
         </div>
         
