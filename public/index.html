@@ -33,13 +33,13 @@
         <div class="landing-container-full">
             <div class="landing-container">
                 <div>
-                    <h1 class = "h1-small">POUROVER COFFEE BREWING CALCULATOR</h1>
-                    <h2 class = "h2-small"> SIMPLE CALCULATOR AND EASY GUIDE</h2>
+                    <h1 class = "h1-small">POUROVER COFFEE TOOL</h1>
+                    <h2 class = "h2-small"> SIMPLE BREWING CALCULATOR AND EASY GUIDE</h2>
                 </div>
             </div>
             <div class = 'landing-container'>
                 <div>
-                    <p>Based on the technique of your choice, swiftly calculate brew ratios following a quick step by step guide. Use this to calcute how much water you need for a brew.</p>
+                    <p>Choose the pourover technique of your choice, swiftly calculate brew ratios and follow the quick step by step guide. Use this to determine the amount of water you need for a brew.</p>
                 </div>
             </div>
 
@@ -126,46 +126,52 @@
         <div class="brew-breakdown-container">
             <h3>Breakdown</h3>
             <div class='line-breakdown-container'>
-                <div class="line-breakdown">
-                    <span class="brew-variable-text"> Brew Size: </span>
-                    <span class="units" id="brewSize"> 200 ml</span>
+                <div class="line-flex">
+                    <div class="line-breakdown">
+                        <span class="brew-variable-text"> Brew Size: </span>
+                        <span class="units" id="brewSize"> 200 ml</span>
+                    </div>
+                    <div class="line-breakdown">
+                        <span class="brew-variable-text">Brew time : </span>
+                        <span class="units">3:30</span>
+                        
+                    </div>
+                    <div class="line-breakdown">
+                        <span class="brew-variable-text">Grind size: </span>
+                        <span class="units">medium fine</span>
+                    </div>
+                    <div class="line-breakdown">
+                        <span class="brew-variable-text">Temperature: </span>
+                        <span class="units">the hotter, the better (especially with lighter roasts)</span>
+                    </div>
                 </div>
-                <div class="line-breakdown">
-                    <span class="brew-variable-text">Brew time : </span>
-                    <span class="units">3:30</span>
-                    
-                </div>
-                <div class="line-breakdown">
-                    <span class="brew-variable-text">Grind size: </span>
-                    <span class="units">medium fine</span>
-                    
-                </div>
+
             </div>
             
 
             <div class="brew-instruction-line">
                 <span class = "brew-time">0:00</span>
                 <span class="brew-line">For bloom add: </span>
-                <span class="brew-line" id="bloom">144 </span>
-                <span class="brew-line" id="bloom">and wait 30s.</span>
+                <span class="brew-line" id="bloom"></span>
+                <span class="brew-line" >and wait 30s.</span>
                 <span class = brew-total id="bloom-total"></span>
             </div>
             <div class="brew-instruction-line">
                 <span class = "brew-time">0:45</span>
                 <span class="brew-line">Pour: </span>
                 <span class="brew-line" id="first-pour"></span>
-                <span class="brew-line" id="bloom">in the next 30s. </span>
+                <span class="brew-line" >in the next 30s. </span>
                 <span class = brew-total id="first-pour-total"></span>
             </div>
             <div class="brew-instruction-line">
                 <span class = "brew-time">1:15</span>
                 <span class="brew-line">Pour: </span>
                 <span class="brew-line" id="second-pour"></span>
-                <span class="brew-line" id="bloom">in the next 30s.</span>
+                <span class="brew-line" >in the next 30s.</span>
                 <span class = "brew-total" id="second-pour-total"></span>
             </div>
             <div class="brew-instruction-line">
-                <span class = "brew-time">1:45 </span>
+                <span class = "brew-time">1:45</span>
                 <span class="brew-line">Stir 1x clockwise and 1x anticlockwise, allow V60 to drain a little, give V60 a gentle swirl and Let brew drawdown.</span>
             </div>
   

@@ -1,8 +1,70 @@
+@font-face {
+  font-family: 'consola';
+  src: url('/fonts/Consolas-Font/CONSOLA.TTF');
+  font-weight: normal;
+  font-style: normal;
+
+}
+@font-face {
+  font-family: 'metropolislight';
+  src: url('/fonts/metro/metropolis-light-webfont.woff2') format('woff2'),
+       url('/fonts/metro/metropolis-light-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+/*font*/
+@font-face {
+  font-family: 'metropolislight_italic';
+  src: url('/fonts/metro/metropolis-lightitalic-webfont.woff2') format('woff2'),
+       url('/fonts/metro/metropolis-lightitalic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+
+
+@font-face {
+  font-family: 'metropolisregular';
+  src: url('/fonts/metro/metropolis-regular-webfont.woff2') format('woff2'),
+       url('/fonts/metro/metropolis-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+
+
+@font-face {
+  font-family: 'metropolisregular_italic';
+  src: url('/fonts/metro/metropolis-regularitalic-webfont.woff2') format('woff2'),
+       url('/fonts/metro/metropolis-regularitalic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+
+
+@font-face {
+  font-family: 'metropolissemi_bold';
+  src: url('/fonts/metro/metropolis-semibold-webfont.woff2') format('woff2'),
+       url('/fonts/metro/metropolis-semibold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
 /*Variables*/
 
 :root {
   /*color*/
   --bg-light: #fcfcfc;
+  --bg-offwhite:#f2f3f4;
   --bg-light-2: #fbfbfb;
   --bg-dark:#2b2e2e;
   --bg-dark-2:#5c6664;
@@ -23,7 +85,11 @@
   --space-lg: 3rem;
   --space-xl: 4rem;
 
-  --main-box-shadow:0 14px 28px rgba(0, 0, 0, 0.103), 0 10px 10px rgba(0, 0, 0, 0.103);
+  --main-box-shadow:
+  0 5px 10px rgba(154,160,185,.05), 
+  0 15px 40px rgba(166,173,201,.2);
+
+
   --main-box-shadow-2:0 0 15px rgba(0, 0, 0, 0.055);
 }
 
@@ -36,34 +102,39 @@
 body{
     margin: 0;
     padding: 0;
-    font-family: "Poppins", sans-serif;
-    background-image: url("/img/coffee-2.jpg");
+    font-family: "metropolislight", Arial, Helvetica, sans-serif;
+    /* background-image: url("/img/coffee-4-15.jpg"); */
+    background-image: url("/img/coffee-5-5.png");
+    /* background-image: url("/img/coffee.png"); */
+    /* background-image: url("/img/coffee-6-1.jpg"); */
     background-size: cover;
     background-repeat: repeat-y;
     color: var(--text-1);
+    background-color: var(--bg-offwhite);
 }
-div, p{
-  
+div, p,span {
+  font-size: 1.2rem;
 }
-.main-container,.landing-container{
-box-shadow: var(--main-box-shadow);
-background-color: var(--bg-light);
-border-radius: 5px;
-padding:var(--space-xs);
+p{
+  line-height: 1.5;
+}
+.main-container,.landing-container-full{
+  box-shadow: var(--main-box-shadow);
 }
 
 
 h1 {
-    font-size: 3em;
+    font-size: 3rem;
   }
 h2 {
-    font-size: 2.5em;
+    font-size: 2.5rem;
 }
 h3 {
-    font-size: 2em;
+    font-size: 2rem;
 }
 h4 {
-    font-size: 1.5em;
+    font-size: 1.2rem;
+    font-weight: normal;
 }
 a{
     text-decoration: none;
@@ -79,7 +150,7 @@ ul{
 
 /* nav */
 header{
-    box-shadow: var(--main-box-shadow-2);
+    box-shadow: var(--main-box-shadow);
     padding: 0 var(--space-xs);
     margin-bottom: var(--space-lg);
     background-color: var(--bg-light);
@@ -115,7 +186,7 @@ header{
     border-radius: 5px;
   }
   #menu ul li a {
-      font-size:0.8rem;
+      font-size:1.2rem;
   }
   
   #menu ul li:hover {
@@ -221,18 +292,19 @@ header{
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-.landing-container > div {
-  padding-bottom: var(--space-md) ;
+.landing-container >div{
+  margin: var(--space-lg) 0;
+
 }
-.landing-container > div:first-child{
-  border-bottom: #E5E5E5 solid 1px;
+.landing-container > div >h1{
+  margin-bottom: var(--space-xs) ;
 }
 
 .h1-small{
-  font-size:1.5em;
+  
 }
 .h2-small{
-  font-size:1.2em
+  font-size: 1.5rem;
 }
 
 
@@ -245,6 +317,10 @@ main,.landing{
     max-width: 60rem;
     width: 100%;
     
+    background-color: var(--bg-light);
+    border-radius: 5px;
+    padding:var(--space-xs);
+    
 }
 .selection{
   display: flex;
@@ -252,7 +328,7 @@ main,.landing{
   align-items: center;
   border-radius: 5px;
   margin-bottom:var(--space-lg) ;
-  padding-bottom:var(--space-xl);
+  padding-bottom:var(--space-xs);
 
   border-bottom: #E5E5E5 solid 1px;
 }
@@ -303,18 +379,23 @@ main,.landing{
   color: var(--text-1-light);
 }
 .video{
-  box-shadow: var(--main-box-shadow-2);
+  box-shadow: var(--main-box-shadow);
   margin-bottom: var(--space-xs);
 }
 .brew-container .video {
-    margin-top:1rem ;
-    margin-bottom:1rem ;
+    margin: var(--space-xs);
+    padding: var(--space-xs);
     display:flex;
     flex-direction: row;
     justify-content:space-between;
     border: 1px solid rgb(224, 224, 224);
     border-radius: 5px;
     max-height :6rem;
+}
+.video-desc{
+  margin: var(--space-xs);
+  padding: var(--space-xs) 0;
+  font-family: "metropolislight_italic";
 }
 .brew-container .video img{
     max-height :6rem;
@@ -360,12 +441,14 @@ main,.landing{
 #brew-methods::-ms-expand {
   display: none;
 }
+.select:hover > #brew-methods{
+  background-color:#ffb76559;
+}
 .select {
   position: relative;
   display: flex;
   width: 11em;
-  height: 3em;
-  line-height: 3;
+  line-height: 2.5rem;
   overflow: hidden;
   border-radius: 5px;
 }
@@ -374,7 +457,7 @@ main,.landing{
   position: absolute;
   top: 0;
   right: 0;
-  padding: 0 1em;
+  padding: 0 0.5em;
   background: var(--bg-orange);
   cursor:pointer;
   pointer-events:none;
@@ -453,25 +536,34 @@ font-weight: bold;
   margin: var(--space-xs);
   padding: var(--space-xs);
   line-height: 1.5;
+  
 }
-.brew-variable-text, .brew-total{
+.line-breakdown-container{
+
+
+}
+.brew-variable-text, .brew-total,#bloom,#first-pour,#second-pour{
   font-weight: bold;
 }
 
 .brew-time{
   padding: 0.1rem 0.1rem;
-  border: var(--text-1) solid 1px;
+  border: #33333314 solid 1px;
+  background-color: #0000000a;
   border-radius: 5px;
   color: var(--text-1);
 }
 .brew-time{
+  font-family: "consola";
   margin-right:var(--space-xss);
+  padding: 0 var(--space-xsss);
   
 }
 .brew-total{
   margin-left:var(--space-xss);
   
 }
+
 
 footer{ 
   height: 10rem;
