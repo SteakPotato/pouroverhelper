@@ -596,6 +596,12 @@ position: relative;
   margin-left:var(--space-xss);
   
 }
+.steps-container ol{
+  margin-left:var(--space-lg);
+}
+.steps-container ol li{
+  margin-bottom:var(--space-xs);
+}
 
 
 footer{ 
@@ -628,6 +634,9 @@ footer>div{
 /*tab*/
 @media (max-width: 900px) {
   html { font-size: 15px; }
+  body{
+    background-size: contain;
+  }
 }
 @media (max-width: 900px) {
     header nav {
