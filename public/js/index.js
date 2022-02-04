@@ -77,36 +77,54 @@ let calculateBrew = (brewSelect) => {
     let secondTotal = document.querySelector('#second-pour-total');
     let brewTotal = document.querySelector('#brewSize');
     
-
-
     //brew size 
     total = roundTo1Decimal(coffeeInput.value * ratioInput.value);
     brewTotal.textContent = total + unit;
 
-    //bloom
-    calcuTemp = roundTo1Decimal(bloomMultiSize * coffeeInput.value);
-    bloom.textContent = calcuTemp + unit;
-
-    brewSum += calcuTemp;
-    bloomTotal.textContent = text + brewSum + unit;
-
-    //first pour
-    calcuTemp = roundTo1Decimal(total * 0.6);
-    first.textContent = calcuTemp + unit;
-
-    brewSum += calcuTemp;
-    firstTotal.textContent = text  +brewSum + unit;
-    
-    //second pour
-    calcuTemp = roundTo1Decimal(total - brewSum);
-    second.textContent = calcuTemp + unit;
-
-    brewSum += calcuTemp;
-    secondTotal.textContent = text +roundTo1Decimal(brewSum) + unit;
-
 
     if(brewSelect.value === "hoffman"){
+    
+        //bloom
+        calcuTemp = roundTo1Decimal(bloomMultiSize * coffeeInput.value);
+        bloom.textContent = calcuTemp + unit;
+        brewSum += calcuTemp;
+        bloomTotal.textContent = text + brewSum + unit;
+    
+        //first pour
+        calcuTemp = roundTo1Decimal(total * 0.6);
+        first.textContent = calcuTemp + unit;
+    
+        brewSum += calcuTemp;
+        firstTotal.textContent = text  +brewSum + unit;
+        
+        //second pour
+        calcuTemp = roundTo1Decimal(total - brewSum);
+        second.textContent = calcuTemp + unit;
+    
+        brewSum += calcuTemp;
+        secondTotal.textContent = text +roundTo1Decimal(brewSum) + unit;
 
+    }
+    else if(brewSelect.value==="rao"){
+
+        bloomMultiSize = 3;
+        //bloom
+        calcuTemp = roundTo1Decimal(bloomMultiSize * coffeeInput.value);
+        bloom.textContent = calcuTemp + unit;
+        brewSum += calcuTemp;
+        bloomTotal.textContent = text + brewSum + unit;
+
+        //first pour
+        calcuTemp = total-brewSum;
+        calcuTemp = roundTo1Decimal(calcuTemp / 2);
+        first.textContent = calcuTemp + unit;
+        brewSum += calcuTemp;
+        firstTotal.textContent = text  +brewSum + unit;
+        
+        //second pour
+        second.textContent = calcuTemp + unit;
+        brewSum += calcuTemp;
+        secondTotal.textContent = text +roundTo1Decimal(brewSum) + unit;
     }
 
 }

@@ -139,9 +139,11 @@ h4 {
 }
 a{
     text-decoration: none;
+    color: var(--text-1);
+
 }
 a:visited{
-  color: inherit;
+  color: var(--text-1);
 }
 ul{
     list-style: none;
@@ -186,12 +188,12 @@ header{
   }
   #menu ul li a {
       font-size:1.2rem;
+      color: inherit;
   }
   
-  #menu ul li:hover {
+  #menu >ul >li:hover {
     background-color:var(--bg-brown);
     color: var(--bg-light);
-    
   }
   
   #hamburger-icon {
@@ -417,6 +419,7 @@ main{
     border-radius: 5px;
     max-height :6rem;
 }
+
 .video-desc{
   margin: var(--space-xs);
   padding: var(--space-xs) 0;
@@ -595,6 +598,10 @@ position: relative;
 .brew-total{
   margin-left:var(--space-xss);
   
+}
+.steps-container >div{
+  margin: var(--space-xs) 0;
+  padding: var(--space-xs) 0;
 }
 .steps-container ol{
   margin-left:var(--space-lg);
