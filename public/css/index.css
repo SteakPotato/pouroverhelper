@@ -440,7 +440,17 @@ main{
 }
 
 
-#brew-methods {
+.bloom-ratio-select-container{
+  display: flex;
+  justify-content:space-between;
+  margin: var(--space-xss) var(--space-xs);
+  padding: 0 var(--space-xs);
+}
+.bloom-ratio-select{
+
+}
+
+#brew-methods,.bloom-ratio-select {
   font-size: var(--font-size-normal);
   transition: all 0.2s ;  
 }
@@ -448,7 +458,7 @@ main{
   color: var(--text-1);
   background-color: var(--bg-light)
 }
-#brew-methods {
+#brew-methods ,.bloom-ratio-select{
   -webkit-appearance:none;
   -moz-appearance:none;
   -ms-appearance:none;
@@ -466,13 +476,23 @@ main{
   flex:1;
 
 }
-#brew-methods::-ms-expand {
+#brew-methods::-ms-expand ,.bloom-ratio-select::-ms-expand{
   display: none;
 }
-.select:hover > #brew-methods{
+.bloom-select:hover > .bloom-ratio-select,.bloom-select:hover::after {
+  background-color:#ffb76559;
+  
+}
+.select:hover >#brew-methods,.select:hover::after {
   background-color:#ffb76559;
 }
-.select {
+#bloom-select{
+  width: 5.5rem;
+}
+#taste1,#taste2{
+  width: 8.5rem;
+}
+.select ,.bloom-select{
   position: relative;
   display: flex;
   width: 11em;
@@ -480,7 +500,7 @@ main{
   overflow: hidden;
   border-radius: 5px;
 }
-.select::after {
+.select::after,.bloom-select::after {
   content: '\25BC';
   position: absolute;
   top: 0;
@@ -491,10 +511,6 @@ main{
   pointer-events:none;
   transition:.25s all ease;
   color:var(--bg-light);
-}
-.select:hover::after {
-  
-  
 }
 
 
@@ -508,7 +524,7 @@ main{
 
 .input-container {
 display: flex;
-align-items: center;
+
 flex-direction: column;
 }
 /* Chrome, Safari, Edge, Opera */
@@ -562,7 +578,7 @@ font-weight: bold;
   
 }
 
-.brew-breakdown-container >.breakdown-container,.brew-breakdown-container >div{
+.brew-breakdown-container >.breakdown-container,.brew-breakdown-container >div,.steps-container{
   margin: var(--space-xs);
   padding: var(--space-xs);
   line-height: 1.5;
@@ -579,6 +595,9 @@ position: relative;
 
 }
 .brew-variable-text, .brew-total,#bloom,#first-pour,#second-pour{
+  font-weight: bold;
+}
+#pour-1,#pour-2,#pour-3,#pour-4,#pour-5{
   font-weight: bold;
 }
 
@@ -620,7 +639,12 @@ footer>div{
   display: flex;
   justify-content: center;
 }
-
+.deactivate{
+  display: none;
+}
+.activate{
+  display: block;
+}
 
 
 /*mobile*/
