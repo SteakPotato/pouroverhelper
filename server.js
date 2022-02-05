@@ -1,16 +1,10 @@
 
 const express = require('express')
-const path = require("path");
 const app = express()
 const port = 3000
 
-//public dir
-app.use('/', express.static(path.join(__dirname + '/public')));
-app.use('/about', express.static(path.join(__dirname + '/public/index.html')));
-
-app.get('/', (req, res) => {
-  res.send('index.html')
-})
+/* app.use(express.static('public')); */
+app.use(express.static('public',{extensions:['html']}));
 
 //port
 app.listen(port, () => {
