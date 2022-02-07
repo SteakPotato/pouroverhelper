@@ -600,9 +600,9 @@ position: relative;
     padding: var(--space-xs);
   }
 .postbrew-container img{
-  margin: var(--space-xs);
-  padding: var(--space-xs);
-  max-width: 80%;
+  margin: var(--space-xs) 0;
+  padding:var(--space-xs) 0;
+  max-width: 100%;
 }
 .postbrew-container > div{
   display: flex;
