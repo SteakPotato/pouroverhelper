@@ -594,6 +594,21 @@ position: relative;
 .steps-container ol li{
   margin-bottom:var(--space-xs);
 }
+.postbrew-container > h3,.postbrew-container > p{
+  
+    margin: var(--space-xs);
+    padding: var(--space-xs);
+  }
+.postbrew-container img{
+  margin: var(--space-xs);
+  padding: var(--space-xs);
+  max-width: 80%;
+}
+.postbrew-container > div{
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+}
 
 
 footer{ 

@@ -1,15 +1,19 @@
 
 window.addEventListener('load',() => {
     let brewSelect = document.querySelector('#brew-methods');
+    let infoTemplate = document.querySelector('#info-template')
     
     if(window.localStorage.getItem('brewMode')){
         brewSelect.value =window.localStorage.getItem('brewMode');
         setTemplates(brewSelect);
+        setATemplate(infoTemplate);
+
     }
     brewSelect.addEventListener('input',(e) => {
         let brewModeValue = e.target.value;
         localStorage.setItem('brewMode', brewModeValue);
         setTemplates(brewSelect);
+        setATemplate(infoTemplate);
 
     })
 })
@@ -24,6 +28,17 @@ let setTemplates = (brewSelect) => {
     document.querySelector('#test').innerHTML = brewTemplate;
     getData(brewSelect);
     addBrewListener(brewSelect);
+}
+/**
+ * 
+ * @param {Element} template a template html element
+ */
+let setATemplate = (template) => {
+    container = document.querySelector(".brew-container");
+    let div = document.createElement("div");
+    div.classList.add("brew-wrapper");
+    div.innerHTML = template.innerHTML;
+    container.appendChild(div);
 }
 
 /**
