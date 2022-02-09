@@ -14,6 +14,8 @@ window.addEventListener('load',() => {
         localStorage.setItem('brewMode', brewModeValue);
         setTemplates(brewSelect);
         setATemplate(infoTemplate);
+        console.log(e)
+        e.target.scrollIntoView({behavior:'smooth'});
 
     })
 })

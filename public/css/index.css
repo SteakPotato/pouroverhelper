@@ -64,6 +64,9 @@
     margin: 0;
     box-sizing: border-box;
 }
+html{
+  scroll-behavior: smooth;
+}
 
 body{
     min-height: 100vh;
@@ -230,11 +233,26 @@ header{
     padding: var(--space-xss);
     transition: all 0.3s ease-in-out;
   }
-  .mobile-menu li a:hover,.mobile-menu li a:active{
+  .mobile-menu li a:hover,.mobile-menu li a:active,.about-a-button:active,.about-a-button:hover{
 
     transform: scale(1.15);
   }
-  
+  .about-a-button{
+    padding: var(--space-xss);
+    margin-top:var(--space-xl);
+    background-color: var(--bg-orange);
+    color: var(--bg-light);
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+  }
+
+#down-icon {
+  max-width: 3rem;
+  max-width: 3rem;
+  position: relative;
+  bottom: 1rem;
+
+}
 
 .landing{
  /*  margin-top:var(--space-lg) ; */
