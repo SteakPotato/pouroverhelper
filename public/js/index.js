@@ -14,7 +14,6 @@ window.addEventListener('load',() => {
         localStorage.setItem('brewMode', brewModeValue);
         setTemplates(brewSelect);
         setATemplate(infoTemplate);
-        console.log(e)
         e.target.scrollIntoView({behavior:'smooth'});
 
     })
@@ -223,6 +222,7 @@ let calculateKasuya = (brewSelect) => {
     let first_60;
     let second_60;
     let third_60;
+    let forth_60;
 
     let coffeeInput = document.querySelector('#coffeeWeight-input');
     let ratioInput = document.querySelector('#brewRatio-input');
@@ -244,7 +244,11 @@ let calculateKasuya = (brewSelect) => {
     let pour5 = document.querySelector('#pour-5');
     let line5Total = document.querySelector('#line5-total');
 
+    let pour6 = document.querySelector('#pour-6');
+    let line6Total = document.querySelector('#line6-total');
+
     let brewTotal = document.querySelector('#brewSize');
+    let lastLine = document.querySelector('#last-brew-line');
 
 
     //brew size 
@@ -297,17 +301,23 @@ let calculateKasuya = (brewSelect) => {
             break;
     }
     //Second part 60% of the brew
-    console.log(Taste2Input);
+    if(Taste2Input.value!="Strong"){
+        if(lastLine.classList.contains("deactivate")){
+            lastLine.classList.toggle("deactivate");
+        }
+    }
     switch (Taste2Input.value) {
         case "Balanced":
-            if(line4Total.parentElement.classList.contains("deactivate")){
-                line4Total.parentElement.classList.toggle("deactivate");
-            }
-            if(!line5Total.parentElement.classList.contains("deactivate")){
+            //when it balanced we have 3 pours. we deactivate the last pour, and activate the third if not active
+            if(line5Total.parentElement.classList.contains("deactivate")){
                 line5Total.parentElement.classList.toggle("deactivate");
             }
-            first_60 = roundTo1Decimal(total_60 / 2);
-            second_60 = roundTo1Decimal(total_60 / 2);
+            if(!line6Total.parentElement.classList.contains("deactivate")){
+                line6Total.parentElement.classList.toggle("deactivate");
+            }
+            first_60 = roundTo1Decimal(total_60 / 3);
+            second_60 = roundTo1Decimal(total_60 / 3);
+            third_60 = roundTo1Decimal(total_60 / 3);
 
             pour3.textContent = first_60 + unit;
             Sum+= first_60;
@@ -317,17 +327,23 @@ let calculateKasuya = (brewSelect) => {
             Sum+= second_60;
             line4Total.textContent = text+Sum + unit;
 
+            pour5.textContent = third_60 + unit;
+            Sum+= third_60;
+            line5Total.textContent = text+Sum + unit;
+
             break;
         case "Strong":
-            if(line4Total.parentElement.classList.contains("deactivate")){
-                line4Total.parentElement.classList.toggle("deactivate");
-            }
+            //when its strong we have all the pours so we check if they were deactivated to activate them
             if(line5Total.parentElement.classList.contains("deactivate")){
                 line5Total.parentElement.classList.toggle("deactivate");
             }
-            first_60 = roundTo1Decimal(total_60 / 3);
-            second_60 = roundTo1Decimal(total_60 / 3);
-            third_60 = roundTo1Decimal(total_60 / 3);
+            if(line6Total.parentElement.classList.contains("deactivate")){
+                line6Total.parentElement.classList.toggle("deactivate");
+            }
+            first_60 = roundTo1Decimal(total_60 / 4);
+            second_60 = roundTo1Decimal(total_60 / 4);
+            third_60 = roundTo1Decimal(total_60 / 4);
+            fourth_60 = roundTo1Decimal(total_60 / 4);
 
             pour3.textContent = first_60 + unit;
             Sum+= first_60;
@@ -341,23 +357,36 @@ let calculateKasuya = (brewSelect) => {
             Sum+= third_60;
             line5Total.textContent = text+Sum + unit;
 
+            pour6.textContent = third_60 + unit;
+            Sum+= fourth_60;
+            line6Total.textContent = text+Sum + unit;
+
+            if(!lastLine.classList.contains("deactivate")){
+                lastLine.classList.toggle("deactivate");
+
+            }
+
             break;
         case "Weak":
-            if(!line4Total.parentElement.classList.contains("deactivate")){
-                line4Total.parentElement.classList.toggle("deactivate");
-            }
+            //when its weak we have 2 pours so we deactivate the 2 others
             if(!line5Total.parentElement.classList.contains("deactivate")){
                 line5Total.parentElement.classList.toggle("deactivate");
             }
-            first_60 = total_60;
+            if(!line6Total.parentElement.classList.contains("deactivate")){
+                line6Total.parentElement.classList.toggle("deactivate");
+            }
+            first_60 = roundTo1Decimal(total_60 / 2);
+            second_60 = roundTo1Decimal(total_60 / 2);
 
             pour3.textContent = first_60 + unit;
             Sum+= first_60;
-            line3Total.textContent = text+Sum + unit;
+            line3Total.textContent =text+ Sum + unit;
+            
+            pour4.textContent = second_60 + unit;
+            Sum+= second_60;
+            line4Total.textContent = text+Sum + unit;
             break;
     }
-
-
 
 }
 /**
