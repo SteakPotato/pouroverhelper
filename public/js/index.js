@@ -143,7 +143,7 @@ let calculateBrew = (brewSelect) => {
         bloomTotal.textContent = text + brewSum + unit;
     
         //first pour
-        calcuTemp = roundTo1Decimal(total * 0.6);
+        calcuTemp = roundTo1Decimal((total * 0.6) - calcuTemp);
         first.textContent = calcuTemp + unit;
     
         brewSum += calcuTemp;
