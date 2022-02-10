@@ -425,12 +425,11 @@ main{
 .bloom-ratio-select-container{
   display: flex;
   justify-content:space-between;
+  align-items: center;
   margin: var(--space-xss) var(--space-xs);
   padding: 0 var(--space-xs);
 }
-.bloom-ratio-select{
 
-}
 
 #brew-methods,.bloom-ratio-select {
   font-size: var(--font-size-normal);
@@ -665,6 +664,13 @@ footer>div{
     }
     .bloom-select:hover > .bloom-ratio-select, .bloom-select:hover::after {
       background-color: #ffb76559;
+    }
+
+    #container-bloom-select{
+      justify-content:flex-start;
+    }
+    #container-bloom-select> span{
+      margin:0 var(--space-md);
     }
 }
 @media (max-width: 900px) {
