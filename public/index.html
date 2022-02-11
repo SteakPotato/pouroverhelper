@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pour over coffee calculator: hario V60 kalita wave chemex</title>
+    <title>Coffee Calculator: hario V60 kalita wave chemex</title>
     <meta name="description" content="select pour over technique: James Hoffmann, Testu Kasuya, Scott Rao and Osmotic flow. calculate pours coffee bean quantity and coffee to water ratio.">
     <meta name="google-site-verification" content="yRQVSia8Ih2EqSYaQFe1jZyzo1TMC9KSIYfE7EBUtdo" />
     <link rel="stylesheet" href="css/index.css">
@@ -60,8 +60,9 @@
                 </div>
             </div>
             <div class = 'landing-container'>
-                <div>
+                <div class = 'landing-text'>
                     <p>Choose the pour over technique of your choice, swiftly calculate brew ratios and follow the quick step by step guide. Use this to determine the amount of water you need for a brew.</p>
+                    <p>If you have no idea what these techniques are, watch <span><a id="text-highlight" href="https://youtu.be/AI4ynXzkSQo">THIS</a></span> and thank me later !</p>
                 </div>
             </div>
         </div>
@@ -114,23 +115,13 @@
                 <h3>Pre Brew</h3>
                 <p>The amount of coffee used and with what ratio of coffee to water.</p>
                 <div class="input-container">
-                    <div class = "bloom-ratio-select-container" id="container-bloom-select">
-                        <span class="brew-variable-text"> Blooming Ratio:</span>
-                        <div class = 'bloom-select' id="bloom-select">
-                            <select class="bloom-ratio-select" id="bloom-ratio-select">
-                                <option value="2" selected >2</option>
-                                <option value="2.5">2.5</option>
-                                <option value="3">3</option>
-                            </select>
-                        </div>
-                    </div>
-    
+                    
                     
                     <div class="input">
                         <div>
                             <a href="javascript: void(0)" id = 'sub-coffee'>
                                 <img src="img/icon/subtract-24.png" class='plus-icon' alt="substract coffee gram" width="24" height="24">
-    
+                                
                             </a>
                             <input type="number" value="30" class="brew-inputs"id="coffeeWeight-input">
                             <a href="javascript: void(0)" id = 'add-coffee'>
@@ -150,6 +141,19 @@
                             </a>
                         </div>
                         <label for="brewRatio-input">1 Part Coffee to Water Ratio (16.7 recommended)</label>
+                    </div>
+                    <div class = "bloom-ratio-select-container" id="container-bloom-select">
+                        <span class="brew-variable-text"> Bloom Water (optional):</span>
+                        <div class = 'bloom-select' id="bloom-select">
+                            <select class="bloom-ratio-select" id="bloom-ratio-select">
+                                <option value="2" selected >2</option>
+                                <option value="2.5">2.5</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class = "p-text">
+                        <p>The amount of water for the blooming phase. multiplies with the coffee dosage.</p>
                     </div>
             
     
@@ -256,22 +260,12 @@
                 <h3>Pre Brew</h3>
                 <p>The amount of coffee used and with what ratio of coffee to water.</p>
                 <div class="input-container">
-                    <div class = "bloom-ratio-select-container" id="container-bloom-select">
-                        <span class="brew-variable-text"> Blooming Ratio:</span>
-                        <div class = 'bloom-select' id="bloom-select">
-                            <select class="bloom-ratio-select" id="bloom-ratio-select">
-                                <option value="2" >2</option>
-                                <option value="2.5">2.5</option>
-                                <option value="3" selected>3</option>
-                            </select>
-                        </div>
-                    </div>
-    
+                    
                     <div class="input">
                         <div>
                             <a href="javascript: void(0)" id = 'sub-coffee'>
                                 <img src="img/icon/subtract-24.png" class='plus-icon' width="24" height="24">
-    
+                                
                             </a>
                             <input type="number" value="20" class="brew-inputs"id="coffeeWeight-input">
                             <a href="javascript: void(0)" id = 'add-coffee'>
@@ -292,8 +286,21 @@
                         </div>
                         <label for="brewRatio-input">1 Part Coffee to Water Ratio (16-18 recommended)</label>
                     </div>
-            
-    
+                    
+                    
+                    <div class = "bloom-ratio-select-container" id="container-bloom-select">
+                        <span class="brew-variable-text"> Bloom Water (optional):</span>
+                        <div class = 'bloom-select' id="bloom-select">
+                            <select class="bloom-ratio-select" id="bloom-ratio-select">
+                                <option value="2" >2</option>
+                                <option value="2.5">2.5</option>
+                                <option value="3" selected>3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class = "p-text">
+                        <p>The amount of water for the blooming phase. multiplies with the coffee dosage.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -325,7 +332,7 @@
                     </div>
                 </div>
                 
-    
+                
                 <div class="brew-instruction-line">
                     <span class = "brew-time">0:00</span>
                     <span class="brew-line">For bloom add: </span>
@@ -565,22 +572,12 @@
                 <h3>Pre Brew</h3>
                 <p>The amount of coffee used and with what ratio of coffee to water.</p>
                 <div class="input-container">
-                    <div class = "bloom-ratio-select-container" id="container-bloom-select">
-                        <span class="brew-variable-text"> Blooming Ratio:</span>
-                        <div class = 'bloom-select' id="bloom-select">
-                            <select class="bloom-ratio-select" id="bloom-ratio-select">
-                                <option value="2" >2</option>
-                                <option value="2.5"selected >2.5</option>
-                                <option value="3" >3</option>
-                            </select>
-                        </div>
-                    </div>
-    
+                    
                     <div class="input">
                         <div>
                             <a href="javascript: void(0)" id = 'sub-coffee'>
                                 <img src="img/icon/subtract-24.png" class='plus-icon' width="24" height="24">
-    
+                                
                             </a>
                             <input type="number" value="20" class="brew-inputs"id="coffeeWeight-input">
                             <a href="javascript: void(0)" id = 'add-coffee'>
@@ -601,8 +598,21 @@
                         </div>
                         <label for="brewRatio-input">1 Part Coffee to Water Ratio (15 recommended)</label>
                     </div>
-            
-    
+                    
+                    
+                    <div class = "bloom-ratio-select-container" id="container-bloom-select">
+                        <span class="brew-variable-text"> Bloom Water (optional):</span>
+                        <div class = 'bloom-select' id="bloom-select">
+                            <select class="bloom-ratio-select" id="bloom-ratio-select">
+                                <option value="2" >2</option>
+                                <option value="2.5"selected >2.5</option>
+                                <option value="3" >3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class = "p-text">
+                        <p>The amount of water for the blooming phase. multiplies with the coffee dosage.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -634,7 +644,7 @@
                     </div>
                 </div>
                 
-    
+                
                 <div class="brew-instruction-line">
                     <span class = "brew-time">0:00</span>
                     <span class="brew-line">For bloom add: </span>
