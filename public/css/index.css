@@ -1,9 +1,8 @@
-@font-face {
-  font-family: 'consola';
-  src: url('../fonts/Consolas-Font/CONSOLA.TTF');
-  font-weight: normal;
-  font-style: normal;
 
+@font-face {
+  font-family: 'Inconsolata';
+src:url('../fonts/Inconsolata-Regular.woff2') format('woff2'),
+    url('../fonts/Inconsolata-Regular.woff') format('woff');
 }
 @font-face {
   font-family: 'metropolislight';
@@ -605,7 +604,8 @@ position: relative;
   color: var(--text-1);
 }
 .brew-time{
-  font-family: "consola";
+  font-family: "Inconsolata";
+  font-size: 1.4rem;
   margin-right:var(--space-xss);
   padding: 0 var(--space-xsss);
   
@@ -680,6 +680,9 @@ footer>div{
 
 /*tab*/
 @media (min-width: 900px){
+  body{
+    background-image: url("../img/coffee-5-5-big.png");
+  }
   .select:hover >#brew-methods, .select:hover::after {
     background-color: #ffb76559;
     }
