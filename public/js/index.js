@@ -222,7 +222,7 @@ let calculateKasuya = (brewSelect) => {
     let first_60;
     let second_60;
     let third_60;
-    let forth_60;
+    let fourth_60;
 
     let coffeeInput = document.querySelector('#coffeeWeight-input');
     let ratioInput = document.querySelector('#brewRatio-input');
@@ -266,11 +266,11 @@ let calculateKasuya = (brewSelect) => {
             second_40 = roundTo1Decimal(total_40 / 2);
             
             pour1.textContent = first_40 + unit;
-            Sum+= first_40;
+            Sum = roundTo1Decimal(Sum + first_40);
             line1Total.textContent = text+Sum + unit;
             
             pour2.textContent = second_40 + unit;
-            Sum+= second_40;
+            Sum = roundTo1Decimal(Sum + second_40);
             line2Total.textContent = text+Sum + unit;
 
             
@@ -280,11 +280,11 @@ let calculateKasuya = (brewSelect) => {
             second_40 = roundTo1Decimal(total_40 * 0.60);
 
             pour1.textContent = first_40 + unit;
-            Sum+= first_40;
+            Sum = roundTo1Decimal(Sum + first_40);
             line1Total.textContent =text+ Sum + unit;
             
             pour2.textContent = second_40 + unit;
-            Sum+= second_40;
+            Sum = roundTo1Decimal(Sum + second_40);
             line2Total.textContent = text+Sum + unit;
             break;
         case "Acidic":
@@ -292,11 +292,11 @@ let calculateKasuya = (brewSelect) => {
             second_40 = roundTo1Decimal(total_40 * 0.40);
 
             pour1.textContent = first_40 + unit;
-            Sum+= first_40;
+            Sum = roundTo1Decimal(Sum + first_40);
             line1Total.textContent = text+Sum + unit;
             
             pour2.textContent = second_40 + unit;
-            Sum+= second_40;
+            Sum = roundTo1Decimal(Sum + second_40);
             line2Total.textContent = text+Sum + unit;
             break;
     }
@@ -320,15 +320,15 @@ let calculateKasuya = (brewSelect) => {
             third_60 = roundTo1Decimal(total_60 / 3);
 
             pour3.textContent = first_60 + unit;
-            Sum+= first_60;
+            Sum = roundTo1Decimal(Sum + first_60);
             line3Total.textContent =text+ Sum + unit;
             
             pour4.textContent = second_60 + unit;
-            Sum+= second_60;
+            Sum = roundTo1Decimal(Sum + second_60);
             line4Total.textContent = text+Sum + unit;
 
             pour5.textContent = third_60 + unit;
-            Sum+= third_60;
+            Sum = roundTo1Decimal(Sum + third_60);
             line5Total.textContent = text+Sum + unit;
 
             break;
@@ -346,19 +346,19 @@ let calculateKasuya = (brewSelect) => {
             fourth_60 = roundTo1Decimal(total_60 / 4);
 
             pour3.textContent = first_60 + unit;
-            Sum+= first_60;
+            Sum = roundTo1Decimal(Sum+= first_60);
             line3Total.textContent = text+Sum + unit;
             
             pour4.textContent = second_60 + unit;
-            Sum+= second_60;
+            Sum = roundTo1Decimal(Sum + second_60);
             line4Total.textContent =text+ Sum + unit;
 
             pour5.textContent = third_60 + unit;
-            Sum+= third_60;
+            Sum = roundTo1Decimal(Sum + third_60);
             line5Total.textContent = text+Sum + unit;
 
-            pour6.textContent = third_60 + unit;
-            Sum+= fourth_60;
+            pour6.textContent = fourth_60 + unit;
+            Sum = roundTo1Decimal(Sum + fourth_60);
             line6Total.textContent = text+Sum + unit;
 
             if(!lastLine.classList.contains("deactivate")){
@@ -379,11 +379,11 @@ let calculateKasuya = (brewSelect) => {
             second_60 = roundTo1Decimal(total_60 / 2);
 
             pour3.textContent = first_60 + unit;
-            Sum+= first_60;
+            Sum = roundTo1Decimal(Sum + first_60);
             line3Total.textContent =text+ Sum + unit;
             
             pour4.textContent = second_60 + unit;
-            Sum+= second_60;
+            Sum = roundTo1Decimal(Sum + second_60);
             line4Total.textContent = text+Sum + unit;
             break;
     }
