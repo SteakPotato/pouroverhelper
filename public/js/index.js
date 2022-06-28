@@ -29,6 +29,7 @@ let setTemplates = (brewSelect) => {
     document.querySelector('#test').innerHTML = brewTemplate;
     getData(brewSelect);
     addBrewListener(brewSelect);
+    setTimerTemplate();
 }
 /**
  * 
@@ -40,6 +41,16 @@ let setATemplate = (template) => {
     div.classList.add("brew-wrapper");
     div.innerHTML = template.innerHTML;
     container.appendChild(div);
+}
+
+let setTimerTemplate = () => {
+    let timerTemplate = document.querySelector('#timertemplate');
+    let containerlist = document.querySelector('.brew-breakdown-container');
+    let div = document.createElement("div");
+    div.classList.add("timer-wrap");
+    div.innerHTML = timerTemplate.innerHTML;
+    containerlist.insertBefore(div,containerlist.lastElementChild);
+    setTimer();
 }
 
 /**
@@ -461,4 +472,51 @@ let addBrewListener = (brewSelect) => {
  */
 let roundTo1Decimal = (n) => {
     return Math.round(n * 10) / 10;
+}
+
+let setTimer = () => {
+    let [milliseconds,seconds,minutes] = [0,0,0];
+    let timer = document.querySelector('.time');
+    let startBtn = document.querySelector('.start-stop');
+    let resetBtn = document.querySelector('.reset');
+    let interval = null;
+    let isCounting= false;
+
+    startBtn.addEventListener('click', () =>{
+        if(isCounting == true){
+            clearInterval(interval);
+            startBtn.innerHTML = 'Start';
+            isCounting = false;
+        }else{
+            startBtn.innerHTML = 'Stop';
+            isCounting = true;
+            interval = setInterval(() => {
+                milliseconds+=10;
+                if(milliseconds == 1000){
+                    milliseconds = 0;
+                    seconds++;
+                    if(seconds == 60){
+                        seconds = 0;
+                        minutes++;
+                    }
+                }
+
+            let m = minutes < 10 ? "0" + minutes : minutes;
+            let s = seconds < 10 ? "0" + seconds : seconds;
+
+            timer.innerHTML = ` ${m} : ${s}`;
+            },10); 
+
+        }
+        
+
+
+    })
+    resetBtn.addEventListener('click', () =>{
+        clearInterval(interval);
+        [milliseconds,seconds,minutes] = [0,0,0];
+        timer.innerHTML ='00 : 00'
+    })
+
+    
 }

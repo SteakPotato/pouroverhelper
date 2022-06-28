@@ -643,6 +643,38 @@ position: relative;
   align-items:center;
 }
 
+.timer-box-container{
+  display: flex;
+  justify-content: space-between;
+  margin: var(--space-xs) 0;
+  padding:var(--space-xs) 0;
+}
+.time{
+  border: #33333314 solid 1px;
+  background-color: #0000000a;
+  border-radius: 5px;
+  color: var(--text-1);
+  font-family: "Inconsolata";
+  font-size: 1.5rem;
+  padding: 0 var(--space-xsss);
+}
+.timer-button  button {
+  border-radius: 5px;
+  font-size: 1.2rem;
+  margin-right: var(--space-xsss) 0;
+  padding: var(--space-xsss) var(--space-xss);
+  color: var(--text-1);
+  background-color: #0000000a;
+  border-radius: 5px;
+  border: #0000000a solid 1px;
+  cursor: pointer;
+}
+
+.timer-button button:hover{
+  background-color: #0000002a;
+}
+
+
 
 footer{ 
 display: flex;
