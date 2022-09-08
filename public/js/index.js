@@ -1,38 +1,40 @@
+//GLOBAL
+var localStorageMap = new Map();
 
 window.addEventListener('load',() => {
-    let brewSelect = document.querySelector('#brew-methods');
+    let templateInUse = document.querySelector('#brew-methods');
     let infoTemplate = document.querySelector('#info-template')
     
     if(window.localStorage.getItem('brewMode')){
-        brewSelect.value =window.localStorage.getItem('brewMode');
-        setTemplates(brewSelect);
+        templateInUse.value =window.localStorage.getItem('brewMode');
+        setTemplates(templateInUse);
         setATemplate(infoTemplate);
 
     }
-    brewSelect.addEventListener('input',(e) => {
+    templateInUse.addEventListener('input',(e) => {
         let brewModeValue = e.target.value;
         localStorage.setItem('brewMode', brewModeValue);
-        setTemplates(brewSelect);
+        setTemplates(templateInUse);
         setATemplate(infoTemplate);
         e.target.scrollIntoView({behavior:'smooth'});
 
     })
 })
 /**
- * Set the template used when the page loads.
+ * Set the all the template used when the page loads.
  *
- * @param {Element} brewSelect brewSelect start select element to determine wich template in use 
+ * @param {Element} templateInUse templateInUse start select element to determine wich template in use 
  */
-let setTemplates = (brewSelect) => {
-    let templateName = '#' + brewSelect.value;
+let setTemplates = (templateInUse) => {
+    let templateName = '#' + templateInUse.value;
     let brewTemplate = document.querySelector(templateName).innerHTML;
     document.querySelector('#test').innerHTML = brewTemplate;
-    getData(brewSelect);
-    addBrewListener(brewSelect);
+    getData(templateInUse);
+    addBrewListener(templateInUse);
     setTimerTemplate();
 }
 /**
- * 
+ * Set one template on in the page
  * @param {Element} template a template html element
  */
 let setATemplate = (template) => {
@@ -56,10 +58,10 @@ let setTimerTemplate = () => {
 /**
  * Saves the data of each inputs in the local storage.
  * Is called each time we receive an input.
- * @param {Element} brewSelect brewSelect start select element to determine wich template in use 
+ * @param {Element} templateInUse templateInUse start select element to determine wich template in use 
  */
-let saveData = (brewSelect) => {
-    let currentTechnique = brewSelect.value;
+let saveData = (templateInUse) => {
+    let currentTechnique = templateInUse.value;
 
     let coffeeInput = document.querySelector('#coffeeWeight-input');
     let ratioInput = document.querySelector('#brewRatio-input');
@@ -75,16 +77,15 @@ let saveData = (brewSelect) => {
         localStorage.setItem(currentTechnique +'-'+'taste1Input', Taste1Input.value);
         localStorage.setItem(currentTechnique +'-'+'taste2Input', Taste2Input.value);
     }
-
 }
 /**
  * Gets the data of each inputs in the local storage and place them.
  * Is called each time we load the page.
  * Will look for specified data depending on wich technique used.
- * @param {Element} brewSelect brewSelect start select element to determine wich template in use 
+ * @param {Element} templateInUse templateInUse start select element to determine wich template in use 
  */
-let getData = (brewSelect) => {
-    let currentTechnique = brewSelect.value;
+let getData = (templateInUse) => {
+    let currentTechnique = templateInUse.value;
     let coffeeInput = document.querySelector('#coffeeWeight-input');
     let ratioInput = document.querySelector('#brewRatio-input');
     
@@ -108,9 +109,9 @@ let getData = (brewSelect) => {
 /**
  * Calculate bloom of a brew and each pours, the method of calculating change depending on wich technique we are using.
  * Is called each time we change the value on a input.
- * @param {Element} brewSelect brewSelect start select element to determine wich template in use 
+ * @param {Element} templateInUse templateInUse start select element to determine wich template in use 
  */
-let calculateBrew = (brewSelect) => {
+let calculateBrew = (templateInUse) => {
     let text = "Total: "
     let unit = " g"
     
@@ -123,7 +124,7 @@ let calculateBrew = (brewSelect) => {
     let ratioInput = document.querySelector('#brewRatio-input');
     let bloomInput;
 //bloom multiplayer
-    if(brewSelect.value !=="kasuya"){
+    if(templateInUse.value !=="kasuya"){
         bloomInput = document.querySelector('#bloom-ratio-select');
         bloomMultiSize = bloomInput.value;
     } 
@@ -144,7 +145,7 @@ let calculateBrew = (brewSelect) => {
     brewTotal.textContent = total + unit;
 
 
-    if(brewSelect.value === "hoffman"){
+    if(templateInUse.value === "hoffman"){
     
         //bloom
         calcuTemp = roundTo1Decimal(bloomMultiSize * coffeeInput.value);
@@ -167,7 +168,7 @@ let calculateBrew = (brewSelect) => {
         secondTotal.textContent = text +roundTo1Decimal(brewSum) + unit;
 
     }
-    else if(brewSelect.value==="rao"){
+    else if(templateInUse.value==="rao"){
 
         //bloom
         calcuTemp = roundTo1Decimal(bloomMultiSize * coffeeInput.value);
@@ -187,10 +188,10 @@ let calculateBrew = (brewSelect) => {
         brewSum += calcuTemp;
         secondTotal.textContent = text +roundTo1Decimal(brewSum) + unit;
     }
-    else if(brewSelect.value ==="kasuya"){
-        calculateKasuya(brewSelect);
+    else if(templateInUse.value ==="kasuya"){
+        calculateKasuya(templateInUse);
     }
-    else if(brewSelect.value ==="osmotic"){
+    else if(templateInUse.value ==="osmotic"){
         //bloom
         calcuTemp = roundTo1Decimal(bloomMultiSize * coffeeInput.value);
         bloom.textContent = calcuTemp + unit;
@@ -215,9 +216,9 @@ let calculateBrew = (brewSelect) => {
 }
 /**
  * method used to calculate the tetsu kasuya technique since It's so different from the others
- * @param {Element} brewSelect brewSelect start select element to determine wich template in use 
+ * @param {Element} templateInUse templateInUse start select element to determine wich template in use 
  */
-let calculateKasuya = (brewSelect) => {
+let calculateKasuya = (templateInUse) => {
     let text = "Total: "
     let unit = " g"
     
@@ -402,9 +403,9 @@ let calculateKasuya = (brewSelect) => {
 }
 /**
  * method adds all the lisenners to inputs and controllers, on each input we recalculate  then save the data. for each click on a controller we dispatch an event and change the value.
- * @param {Element} brewSelect start select element to determine wich template in use 
+ * @param {Element} templateInUse start select element to determine wich template in use 
  */
-let addBrewListener = (brewSelect) => {
+let addBrewListener = (templateInUse) => {
     //inputs
     let coffeeInput = document.querySelector('#coffeeWeight-input');
     let ratioInput = document.querySelector('#brewRatio-input');
@@ -418,31 +419,31 @@ let addBrewListener = (brewSelect) => {
     let addcoffee = document.querySelector('#add-coffee');
 
     //inputs listening
-    calculateBrew(brewSelect);
+    calculateBrew(templateInUse);
     coffeeInput.addEventListener('input',() => {
-        calculateBrew(brewSelect);
-        saveData(brewSelect);
+        calculateBrew(templateInUse);
+        saveData(templateInUse);
     })
     ratioInput.addEventListener('input',() => {
-        calculateBrew(brewSelect);
-        saveData(brewSelect);
+        calculateBrew(templateInUse);
+        saveData(templateInUse);
     })
-    if(brewSelect.value!=="kasuya"){
+    if(templateInUse.value!=="kasuya"){
         bloomInput = document.querySelector('#bloom-ratio-select');
         bloomInput.addEventListener('input',() => {
-            calculateBrew(brewSelect);
-            saveData(brewSelect);
+            calculateBrew(templateInUse);
+            saveData(templateInUse);
         })
-    }else if(brewSelect.value=="kasuya"){
+    }else if(templateInUse.value=="kasuya"){
         Taste1Input = document.querySelector('#taste1-select');
         Taste2Input = document.querySelector('#taste2-select');
         Taste1Input.addEventListener('input',() => {
-            calculateBrew(brewSelect);
-            saveData(brewSelect);
+            calculateBrew(templateInUse);
+            saveData(templateInUse);
         })
         Taste2Input.addEventListener('input',() => {
-            calculateBrew(brewSelect);
-            saveData(brewSelect);
+            calculateBrew(templateInUse);
+            saveData(templateInUse);
         })
     }
 
