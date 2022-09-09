@@ -1,5 +1,3 @@
-//GLOBAL
-var localStorageMap = new Map();
 
 window.addEventListener('load',() => {
     let templateInUse = document.querySelector('#brew-methods');
