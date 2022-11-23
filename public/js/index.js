@@ -1,35 +1,50 @@
 
-window.addEventListener('load',() => {
-    let templateInUse = document.querySelector('#brew-methods');
-    let infoTemplate = document.querySelector('#info-template')
+window.addEventListener('load', async () => {
+    let templateInUseSelect = document.querySelector('#brew-methods'); //template used from the Select in Body
+    
+    let templates = await fetchTemplate();
+    //console.log(templates);
+
+    let infoTemplate= templates.content.querySelector('#info-template');
     
     if(window.localStorage.getItem('brewMode')){
-        templateInUse.value =window.localStorage.getItem('brewMode');
-        setTemplates(templateInUse);
+        templateInUseSelect.value =window.localStorage.getItem('brewMode');
+        setTemplates(templateInUseSelect,templates);
         setATemplate(infoTemplate);
 
     }
-    templateInUse.addEventListener('input',(e) => {
+    templateInUseSelect.addEventListener('input',(e) => {
         let brewModeValue = e.target.value;
         localStorage.setItem('brewMode', brewModeValue);
-        setTemplates(templateInUse);
+        setTemplates(templateInUseSelect,templates);
         setATemplate(infoTemplate);
         e.target.scrollIntoView({behavior:'smooth'});
 
     })
 })
+
+
+let fetchTemplate = async () => {
+    //get the imported document in templates
+    let templates = document.createElement('template');
+    let res = await fetch('template.html');
+    templates.innerHTML = await res.text();
+    return templates;
+    //console.log( templates);
+}
+
 /**
  * Set the all the template used when the page loads.
  *
- * @param {Element} templateInUse templateInUse start select element to determine wich template in use 
+ * @param {Element} templateInUseSelect templateInUseSelect start select element to determine wich template in use 
  */
-let setTemplates = (templateInUse) => {
-    let templateName = '#' + templateInUse.value;
-    let brewTemplate = document.querySelector(templateName).innerHTML;
+let setTemplates = (templateInUseSelect,templates) => {
+    let templateName = '#' + templateInUseSelect.value;
+    let brewTemplate = templates.content.querySelector(templateName).innerHTML;
     document.querySelector('#test').innerHTML = brewTemplate;
-    getData(templateInUse);
-    addBrewListener(templateInUse);
-    setTimerTemplate();
+    getData(templateInUseSelect);
+    addBrewListener(templateInUseSelect);
+    setTimerTemplate(templates);
 }
 /**
  * Set one template on in the page
@@ -43,8 +58,8 @@ let setATemplate = (template) => {
     container.appendChild(div);
 }
 
-let setTimerTemplate = () => {
-    let timerTemplate = document.querySelector('#timertemplate');
+let setTimerTemplate = (templates) => {
+    let timerTemplate = templates.content.querySelector('#timertemplate');
     let containerlist = document.querySelector('.brew-breakdown-container');
     let div = document.createElement("div");
     div.classList.add("timer-wrap");
@@ -56,10 +71,10 @@ let setTimerTemplate = () => {
 /**
  * Saves the data of each inputs in the local storage.
  * Is called each time we receive an input.
- * @param {Element} templateInUse templateInUse start select element to determine wich template in use 
+ * @param {Element} templateInUseSelect templateInUseSelect start select element to determine wich template in use 
  */
-let saveData = (templateInUse) => {
-    let currentTechnique = templateInUse.value;
+let saveData = (templateInUseSelect) => {
+    let currentTechnique = templateInUseSelect.value;
 
     let coffeeInput = document.querySelector('#coffeeWeight-input');
     let ratioInput = document.querySelector('#brewRatio-input');
@@ -80,10 +95,10 @@ let saveData = (templateInUse) => {
  * Gets the data of each inputs in the local storage and place them.
  * Is called each time we load the page.
  * Will look for specified data depending on wich technique used.
- * @param {Element} templateInUse templateInUse start select element to determine wich template in use 
+ * @param {Element} templateInUseSelect templateInUseSelect start select element to determine wich template in use 
  */
-let getData = (templateInUse) => {
-    let currentTechnique = templateInUse.value;
+let getData = (templateInUseSelect) => {
+    let currentTechnique = templateInUseSelect.value;
     let coffeeInput = document.querySelector('#coffeeWeight-input');
     let ratioInput = document.querySelector('#brewRatio-input');
     
@@ -107,9 +122,9 @@ let getData = (templateInUse) => {
 /**
  * Calculate bloom of a brew and each pours, the method of calculating change depending on wich technique we are using.
  * Is called each time we change the value on a input.
- * @param {Element} templateInUse templateInUse start select element to determine wich template in use 
+ * @param {Element} templateInUseSelect templateInUseSelect start select element to determine wich template in use 
  */
-let calculateBrew = (templateInUse) => {
+let calculateBrew = (templateInUseSelect) => {
     let text = "Total: "
     let unit = " g"
     
@@ -122,7 +137,7 @@ let calculateBrew = (templateInUse) => {
     let ratioInput = document.querySelector('#brewRatio-input');
     let bloomInput;
 //bloom multiplayer
-    if(templateInUse.value !=="kasuya"){
+    if(templateInUseSelect.value !=="kasuya"){
         bloomInput = document.querySelector('#bloom-ratio-select');
         bloomMultiSize = bloomInput.value;
     } 
@@ -143,7 +158,7 @@ let calculateBrew = (templateInUse) => {
     brewTotal.textContent = total + unit;
 
 
-    if(templateInUse.value === "hoffman"){
+    if(templateInUseSelect.value === "hoffman"){
     
         //bloom
         calcuTemp = roundTo1Decimal(bloomMultiSize * coffeeInput.value);
@@ -166,7 +181,7 @@ let calculateBrew = (templateInUse) => {
         secondTotal.textContent = text +roundTo1Decimal(brewSum) + unit;
 
     }
-    else if(templateInUse.value==="rao"){
+    else if(templateInUseSelect.value==="rao"){
 
         //bloom
         calcuTemp = roundTo1Decimal(bloomMultiSize * coffeeInput.value);
@@ -186,10 +201,10 @@ let calculateBrew = (templateInUse) => {
         brewSum += calcuTemp;
         secondTotal.textContent = text +roundTo1Decimal(brewSum) + unit;
     }
-    else if(templateInUse.value ==="kasuya"){
-        calculateKasuya(templateInUse);
+    else if(templateInUseSelect.value ==="kasuya"){
+        calculateKasuya(templateInUseSelect);
     }
-    else if(templateInUse.value ==="osmotic"){
+    else if(templateInUseSelect.value ==="osmotic"){
         //bloom
         calcuTemp = roundTo1Decimal(bloomMultiSize * coffeeInput.value);
         bloom.textContent = calcuTemp + unit;
@@ -214,9 +229,9 @@ let calculateBrew = (templateInUse) => {
 }
 /**
  * method used to calculate the tetsu kasuya technique since It's so different from the others
- * @param {Element} templateInUse templateInUse start select element to determine wich template in use 
+ * @param {Element} templateInUseSelect templateInUseSelect start select element to determine wich template in use 
  */
-let calculateKasuya = (templateInUse) => {
+let calculateKasuya = (templateInUseSelect) => {
     let text = "Total: "
     let unit = " g"
     
@@ -401,9 +416,9 @@ let calculateKasuya = (templateInUse) => {
 }
 /**
  * method adds all the lisenners to inputs and controllers, on each input we recalculate  then save the data. for each click on a controller we dispatch an event and change the value.
- * @param {Element} templateInUse start select element to determine wich template in use 
+ * @param {Element} templateInUseSelect start select element to determine wich template in use 
  */
-let addBrewListener = (templateInUse) => {
+let addBrewListener = (templateInUseSelect) => {
     //inputs
     let coffeeInput = document.querySelector('#coffeeWeight-input');
     let ratioInput = document.querySelector('#brewRatio-input');
@@ -417,31 +432,31 @@ let addBrewListener = (templateInUse) => {
     let addcoffee = document.querySelector('#add-coffee');
 
     //inputs listening
-    calculateBrew(templateInUse);
+    calculateBrew(templateInUseSelect);
     coffeeInput.addEventListener('input',() => {
-        calculateBrew(templateInUse);
-        saveData(templateInUse);
+        calculateBrew(templateInUseSelect);
+        saveData(templateInUseSelect);
     })
     ratioInput.addEventListener('input',() => {
-        calculateBrew(templateInUse);
-        saveData(templateInUse);
+        calculateBrew(templateInUseSelect);
+        saveData(templateInUseSelect);
     })
-    if(templateInUse.value!=="kasuya"){
+    if(templateInUseSelect.value!=="kasuya"){
         bloomInput = document.querySelector('#bloom-ratio-select');
         bloomInput.addEventListener('input',() => {
-            calculateBrew(templateInUse);
-            saveData(templateInUse);
+            calculateBrew(templateInUseSelect);
+            saveData(templateInUseSelect);
         })
-    }else if(templateInUse.value=="kasuya"){
+    }else if(templateInUseSelect.value=="kasuya"){
         Taste1Input = document.querySelector('#taste1-select');
         Taste2Input = document.querySelector('#taste2-select');
         Taste1Input.addEventListener('input',() => {
-            calculateBrew(templateInUse);
-            saveData(templateInUse);
+            calculateBrew(templateInUseSelect);
+            saveData(templateInUseSelect);
         })
         Taste2Input.addEventListener('input',() => {
-            calculateBrew(templateInUse);
-            saveData(templateInUse);
+            calculateBrew(templateInUseSelect);
+            saveData(templateInUseSelect);
         })
     }
 
