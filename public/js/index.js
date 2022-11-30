@@ -127,103 +127,18 @@ let getData = (templateInUseSelect) => {
 let calculateBrew = (templateInUseSelect) => {
     let text = "Total: "
     let unit = " g"
-    
-    let bloomMultiSize = 0;
-    let brewSum = 0;
-    let total = 0;
-    let calcuTemp;
-
-    let coffeeInput = document.querySelector('#coffeeWeight-input');
-    let ratioInput = document.querySelector('#brewRatio-input');
-    let bloomInput;
-//bloom multiplayer
-    if(templateInUseSelect.value !=="kasuya"){
-        bloomInput = document.querySelector('#bloom-ratio-select');
-        bloomMultiSize = bloomInput.value;
-    } 
-    
-
-    let bloom = document.querySelector('#bloom');
-    let bloomTotal = document.querySelector('#bloom-total');
-    let first = document.querySelector('#first-pour');
-    let firstTotal = document.querySelector('#first-pour-total');
-    let second = document.querySelector('#second-pour');
-    let secondTotal = document.querySelector('#second-pour-total');
-    let brewTotal = document.querySelector('#brewSize');
-    
-    
-
-    //brew size 
-    total = roundTo1Decimal(coffeeInput.value * ratioInput.value);
-    brewTotal.textContent = total + unit;
-
 
     if(templateInUseSelect.value === "hoffman"){
-    
-        //bloom
-        calcuTemp = roundTo1Decimal(bloomMultiSize * coffeeInput.value);
-        bloom.textContent = calcuTemp + unit;
-        brewSum += calcuTemp;
-        bloomTotal.textContent = text + brewSum + unit;
-    
-        //first pour
-        calcuTemp = roundTo1Decimal((total * 0.6) - calcuTemp);
-        first.textContent = calcuTemp + unit;
-    
-        brewSum += calcuTemp;
-        firstTotal.textContent = text  +brewSum + unit;
-        
-        //second pour
-        calcuTemp = roundTo1Decimal(total - brewSum);
-        second.textContent = calcuTemp + unit;
-    
-        brewSum += calcuTemp;
-        secondTotal.textContent = text +roundTo1Decimal(brewSum) + unit;
-
+        calculateHoffmann();
     }
     else if(templateInUseSelect.value==="rao"){
-
-        //bloom
-        calcuTemp = roundTo1Decimal(bloomMultiSize * coffeeInput.value);
-        bloom.textContent = calcuTemp + unit;
-        brewSum += calcuTemp;
-        bloomTotal.textContent = text + brewSum + unit;
-
-        //first pour
-        calcuTemp = total-brewSum;
-        calcuTemp = roundTo1Decimal(calcuTemp / 2);
-        first.textContent = calcuTemp + unit;
-        brewSum += calcuTemp;
-        firstTotal.textContent = text  +brewSum + unit;
-        
-        //second pour
-        second.textContent = calcuTemp + unit;
-        brewSum += calcuTemp;
-        secondTotal.textContent = text +roundTo1Decimal(brewSum) + unit;
+        calculateRao();
     }
     else if(templateInUseSelect.value ==="kasuya"){
         calculateKasuya(templateInUseSelect);
     }
     else if(templateInUseSelect.value ==="osmotic"){
-        //bloom
-        calcuTemp = roundTo1Decimal(bloomMultiSize * coffeeInput.value);
-        bloom.textContent = calcuTemp + unit;
-        brewSum += calcuTemp;
-        bloomTotal.textContent = text + brewSum + unit;
-    
-        //first pour
-        calcuTemp = roundTo1Decimal(total * 0.5);
-        first.textContent = calcuTemp + unit;
-    
-        brewSum += calcuTemp;
-        firstTotal.textContent = text  +brewSum + unit;
-        
-        //second pour
-        calcuTemp = roundTo1Decimal(total - brewSum);
-        second.textContent = calcuTemp + unit;
-    
-        brewSum += calcuTemp;
-        secondTotal.textContent = text +roundTo1Decimal(brewSum) + unit;
+        calculateOsmotic();
     }
 
 }
@@ -413,6 +328,150 @@ let calculateKasuya = (templateInUseSelect) => {
             break;
     }
 
+}
+let calculateHoffmann = () => {
+    let text = "Total: "
+    let unit = " g"
+    
+    let bloomMultiSize = 0;
+    let brewSum = 0;
+    let total = 0;
+    let calcuTemp;
+
+    let coffeeInput = document.querySelector('#coffeeWeight-input');
+    let ratioInput = document.querySelector('#brewRatio-input');
+    let bloomInput = document.querySelector('#bloom-ratio-select');
+    bloomMultiSize = bloomInput.value;
+     
+
+    let bloom = document.querySelector('#bloom');
+    let bloomTotal = document.querySelector('#bloom-total');
+    let first = document.querySelector('#first-pour');
+    let firstTotal = document.querySelector('#first-pour-total');
+    let second = document.querySelector('#second-pour');
+    let secondTotal = document.querySelector('#second-pour-total');
+    let brewTotal = document.querySelector('#brewSize');
+
+    //brew size 
+    total = roundTo1Decimal(coffeeInput.value * ratioInput.value);
+    brewTotal.textContent = total + unit;
+
+
+
+    //bloom
+    calcuTemp = roundTo1Decimal(bloomMultiSize * coffeeInput.value);
+    bloom.textContent = calcuTemp + unit;
+    brewSum += calcuTemp;
+    bloomTotal.textContent = text + brewSum + unit;
+
+    //first pour
+    calcuTemp = roundTo1Decimal((total * 0.6) - calcuTemp);
+    first.textContent = calcuTemp + unit;
+
+    brewSum += calcuTemp;
+    firstTotal.textContent = text  +brewSum + unit;
+    
+    //second pour
+    calcuTemp = roundTo1Decimal(total - brewSum);
+    second.textContent = calcuTemp + unit;
+
+    brewSum += calcuTemp;
+    secondTotal.textContent = text +roundTo1Decimal(brewSum) + unit;
+
+}
+let calculateRao = () => {
+    let text = "Total: "
+    let unit = " g"
+    
+    let bloomMultiSize = 0;
+    let brewSum = 0;
+    let total = 0;
+    let calcuTemp;
+
+    let coffeeInput = document.querySelector('#coffeeWeight-input');
+    let ratioInput = document.querySelector('#brewRatio-input');
+    let bloomInput = document.querySelector('#bloom-ratio-select');
+    bloomMultiSize = bloomInput.value;
+     
+
+    let bloom = document.querySelector('#bloom');
+    let bloomTotal = document.querySelector('#bloom-total');
+    let first = document.querySelector('#first-pour');
+    let firstTotal = document.querySelector('#first-pour-total');
+    let second = document.querySelector('#second-pour');
+    let secondTotal = document.querySelector('#second-pour-total');
+    let brewTotal = document.querySelector('#brewSize');
+
+    //brew size 
+    total = roundTo1Decimal(coffeeInput.value * ratioInput.value);
+    brewTotal.textContent = total + unit;
+
+
+    //bloom
+    calcuTemp = roundTo1Decimal(bloomMultiSize * coffeeInput.value);
+    bloom.textContent = calcuTemp + unit;
+    brewSum += calcuTemp;
+    bloomTotal.textContent = text + brewSum + unit;
+
+    //first pour
+    calcuTemp = total-brewSum;
+    calcuTemp = roundTo1Decimal(calcuTemp / 2);
+    first.textContent = calcuTemp + unit;
+    brewSum += calcuTemp;
+    firstTotal.textContent = text  +brewSum + unit;
+    
+    //second pour
+    second.textContent = calcuTemp + unit;
+    brewSum += calcuTemp;
+    secondTotal.textContent = text +roundTo1Decimal(brewSum) + unit;
+}
+let calculateOsmotic = () => {
+    let text = "Total: "
+    let unit = " g"
+    
+    let bloomMultiSize = 0;
+    let brewSum = 0;
+    let total = 0;
+    let calcuTemp;
+
+    let coffeeInput = document.querySelector('#coffeeWeight-input');
+    let ratioInput = document.querySelector('#brewRatio-input');
+    let bloomInput = document.querySelector('#bloom-ratio-select');
+    bloomMultiSize = bloomInput.value;
+     
+
+    let bloom = document.querySelector('#bloom');
+    let bloomTotal = document.querySelector('#bloom-total');
+    let first = document.querySelector('#first-pour');
+    let firstTotal = document.querySelector('#first-pour-total');
+    let second = document.querySelector('#second-pour');
+    let secondTotal = document.querySelector('#second-pour-total');
+    let brewTotal = document.querySelector('#brewSize');
+
+    //brew size 
+    total = roundTo1Decimal(coffeeInput.value * ratioInput.value);
+    brewTotal.textContent = total + unit;
+
+
+    //bloom
+    calcuTemp = roundTo1Decimal(bloomMultiSize * coffeeInput.value);
+    bloom.textContent = calcuTemp + unit;
+    brewSum += calcuTemp;
+    bloomTotal.textContent = text + brewSum + unit;
+
+    //first pour
+    calcuTemp = roundTo1Decimal(total * 0.5);
+    first.textContent = calcuTemp + unit;
+
+    brewSum += calcuTemp;
+    firstTotal.textContent = text  +brewSum + unit;
+    
+    //second pour
+    calcuTemp = roundTo1Decimal(total - brewSum);
+    second.textContent = calcuTemp + unit;
+
+    brewSum += calcuTemp;
+    secondTotal.textContent = text +roundTo1Decimal(brewSum) + unit;
 }
 /**
  * method adds all the lisenners to inputs and controllers, on each input we recalculate  then save the data. for each click on a controller we dispatch an event and change the value.

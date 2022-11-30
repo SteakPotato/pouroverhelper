@@ -421,6 +421,9 @@ main{
     border-radius: 5px;
     max-height :6rem;
 }
+.brew-container .video:hover {
+  background-color:var(--bg-offwhite);
+}
 
 .video-desc{
   margin: var(--space-xs);
