@@ -586,6 +586,10 @@ let setTimer = () => {
 
     })
     resetBtn.addEventListener('click', () =>{
+        if(isCounting){
+            startBtn.innerHTML = 'Start';
+            isCounting = false;
+        }
         clearInterval(interval);
         [milliseconds,seconds,minutes] = [0,0,0];
         timer.innerHTML ='00 : 00'

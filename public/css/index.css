@@ -664,7 +664,7 @@ position: relative;
 .timer-button  button {
   border-radius: 5px;
   font-size: 1.2rem;
-  margin-right: var(--space-xsss) 0;
+  margin-right: var(--space-xsss);
   padding: var(--space-xsss) var(--space-xss);
   color: var(--text-1);
   background-color: #0000000a;

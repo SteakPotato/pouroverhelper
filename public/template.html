@@ -13,617 +13,621 @@
     <link rel="mask-icon" href="img/icon/favicon/safari-pinned-tab.svg" color="#59360d">
     <meta name="theme-color" content="#ffffff">
 </head>
-<template id="hoffman">
-    <div class="brew-container">
-        <div class="brew-wrapper">
-            <div class="brew-info-container">
-                <h3 class = 'brew-title'>James Hoffmann's V60</h3>
-                <a href="https://www.youtube.com/watch?v=AI4ynXzkSQo" class="video" target="_blank" rel="noopener noreferrer">
-                    <img src="img/hoffman_thumbnail.jpg" alt="James hoffmann ultimate V60">
-                    <div class="video-container">
-                        <p class="video-title">The Ultimate V60 Technique</p>
-                        <p class ='video-title video-site'>youtube.com</p>
-                    </div>
-                </a>
-                <p class='video-desc'>"This is my recommended technique for making coffee with the Hario V60, and any other cone-shaped brewer with a large open area."</p>
-                
+<body>
+    <template id="hoffman">
+        <div class="brew-container">
+            <div class="brew-wrapper">
+                <div class="brew-info-container">
+                    <h3 class = 'brew-title'>James Hoffmann's V60</h3>
+                    <a href="https://www.youtube.com/watch?v=AI4ynXzkSQo" class="video" target="_blank" rel="noopener noreferrer">
+                        <img src="img/hoffman_thumbnail.jpg" alt="James hoffmann ultimate V60">
+                        <div class="video-container">
+                            <p class="video-title">The Ultimate V60 Technique</p>
+                            <p class ='video-title video-site'>youtube.com</p>
+                        </div>
+                    </a>
+                    <p class='video-desc'>"This is my recommended technique for making coffee with the Hario V60, and any other cone-shaped brewer with a large open area."</p>
+                    
+                </div>
             </div>
-        </div>
-        <div class="brew-wrapper">
-            <div class="brew-inputs-container">
-                <h3>Pre Brew</h3>
-                <p>The amount of coffee used and with what ratio of coffee to water.</p>
-                <div class="input-container">
-                    
-                    
-                    <div class="input">
-                        <div>
-                            <a href="javascript: void(0)" id = 'sub-coffee'>
-                                <img src="img/icon/subtract-24.png" class='plus-icon' alt="substract coffee gram" width="24" height="24">
+            <div class="brew-wrapper">
+                <div class="brew-inputs-container">
+                    <h3>Pre Brew</h3>
+                    <p>The amount of coffee used and with what ratio of coffee to water.</p>
+                    <div class="input-container">
+                        
+                        
+                        <div class="input">
+                            <div>
+                                <a href="javascript: void(0)" id = 'sub-coffee'>
+                                    <img src="img/icon/subtract-24.png" class='plus-icon' alt="substract coffee gram" width="24" height="24">
+                                    
+                                </a>
+                                <input type="number" value="30" class="brew-inputs" id="coffeeWeight-input">
+                                <a href="javascript: void(0)" id = 'add-coffee'>
+                                    <img src="img/icon/plus-math-24.png" class='plus-icon' alt="add coffee gram" width="24" height="24">
+                                </a>
+                            </div>
+                            <label for="coffeeWeight-input">Coffee (g)</label>
+                        </div>
+                        <div class="input">
+                            <div>
+                                <a href="javascript: void(0)" id = 'sub-ratio'>
+                                    <img src="img/icon/subtract-24.png" alt="substract coffee ratio" class='plus-icon' width="24" height="24">
+                                </a>
+                                <input type="number" value="16.7" class="brew-inputs" id="brewRatio-input" >
+                                <a href="javascript: void(0)" id = 'add-ratio'>
+                                    <img src="img/icon/plus-math-24.png"  alt="substract coffee ratio" class='plus-icon' width="24" height="24">
+                                </a>
+                            </div>
+                            <label for="brewRatio-input">1 Part Coffee to Water Ratio (16.7 recommended)</label>
+                        </div>
+                        <div class = "bloom-ratio-select-container" id="container-bloom-select">
+                            <span class="brew-variable-text"> Bloom Water (optional):</span>
+                            <div class = 'bloom-select' id="bloom-select">
+                                <select class="bloom-ratio-select" id="bloom-ratio-select">
+                                    <option value="2" selected >2</option>
+                                    <option value="2.5">2.5</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class = "p-text">
+                            <p>The amount of water for the blooming phase. multiplies with the coffee dosage.</p>
+                        </div>
+                
+        
+                    </div>
+                </div>
+            </div>
+            <div class="brew-wrapper">
+                <div class="brew-breakdown-container">
+                    <div class = 'breakdown-container'>
+                        <h3>Breakdown</h3>
+                        <img src="img/icon/kettle-1.png" alt="coffee kettle for pour over" width='120' height='120'>
+                    </div>
+                    <div class='line-breakdown-container'>
+                        <div class="line-flex">
+                            <div class="line-breakdown">
+                                <span class="brew-variable-text"> Brew water: </span>
+                                <span class="units" id="brewSize"> </span>
+                            </div>
+                            <div class="line-breakdown">
+                                <span class="brew-variable-text">Brew time : </span>
+                                <span class="units">3:30</span>
                                 
-                            </a>
-                            <input type="number" value="30" class="brew-inputs"id="coffeeWeight-input">
-                            <a href="javascript: void(0)" id = 'add-coffee'>
-                                <img src="img/icon/plus-math-24.png" class='plus-icon' alt="add coffee gram" width="24" height="24">
-                            </a>
-                        </div>
-                        <label for="coffeeWeight-input">Coffee (g)</label>
-                    </div>
-                    <div class="input">
-                        <div>
-                            <a href="javascript: void(0)"id = 'sub-ratio'>
-                                <img src="img/icon/subtract-24.png" alt="substract coffee ratio" class='plus-icon'width="24" height="24">
-                            </a>
-                            <input type="number" value="16.7" class="brew-inputs" id="brewRatio-input" >
-                            <a href="javascript: void(0)"id = 'add-ratio'>
-                                <img src="img/icon/plus-math-24.png"  alt="substract coffee ratio" class='plus-icon' width="24" height="24">
-                            </a>
-                        </div>
-                        <label for="brewRatio-input">1 Part Coffee to Water Ratio (16.7 recommended)</label>
-                    </div>
-                    <div class = "bloom-ratio-select-container" id="container-bloom-select">
-                        <span class="brew-variable-text"> Bloom Water (optional):</span>
-                        <div class = 'bloom-select' id="bloom-select">
-                            <select class="bloom-ratio-select" id="bloom-ratio-select">
-                                <option value="2" selected >2</option>
-                                <option value="2.5">2.5</option>
-                                <option value="3">3</option>
-                            </select>
+                            </div>
+                            <div class="line-breakdown">
+                                <span class="brew-variable-text">Grind size: </span>
+                                <span class="units">medium fine</span>
+                            </div>
+                            <div class="line-breakdown">
+                                <span class="brew-variable-text">Temperature: </span>
+                                <span class="units">the hotter, the better (especially with lighter roasts)</span>
+                            </div>
                         </div>
                     </div>
-                    <div class = "p-text">
-                        <p>The amount of water for the blooming phase. multiplies with the coffee dosage.</p>
+                    
+        
+                    <div class="brew-instruction-line">
+                        <span class = "brew-time">0:00</span>
+                        <span class="brew-line">For bloom add: </span>
+                        <span class="brew-line" id="bloom"></span>
+                        <span class="brew-line" >and wait 30s to 45s.</span>
+                        <span class = brew-total id="bloom-total"></span>
                     </div>
+                    <div class="brew-instruction-line">
+                        <span class = "brew-time">0:45</span>
+                        <span class="brew-line">Pour: </span>
+                        <span class="brew-line" id="first-pour"></span>
+                        <span class="brew-line" >in the next 30s. </span>
+                        <span class = brew-total id="first-pour-total"></span>
+                    </div>
+                    <div class="brew-instruction-line">
+                        <span class = "brew-time">1:15</span>
+                        <span class="brew-line">Pour: </span>
+                        <span class="brew-line" id="second-pour"></span>
+                        <span class="brew-line" >in the next 30s.</span>
+                        <span class = "brew-total" id="second-pour-total"></span>
+                    </div>
+                    <div class="brew-instruction-line">
+                        <span class = "brew-time">1:45</span>
+                        <span class="brew-line">Stir in each direction, allow V60 to drain a little, give V60 a gentle swirl and let brew drawdown.</span>
+                    </div>
+                    <div class ='steps-container'>
+                        <div class='brew-variable-text'>Notes:</div>
+                        <ol>
+                            <li>Preheat and rinse your filter in V60.</li>
+                            <li>Add ground coffee and make a small well.</li>
+                            <li>Start a timer and begin the blooming phase with 2X the coffee weight.</li>
+                            <li>Swirl the V60 and wait for 30s to 45s.</li>
+                            <li>Pour 60% of total brew for 30s.</li>
+                            <li>Keep pouring the rest for the water over 30s.</li>
+                            <li>Lightly stir one time in each direction and wait.</li>
+                            <li>Enjoy!</li>
+                        </ol>
+                    </div>
+        
+                </div>
+            </div>
+    
+            
             
     
-                </div>
-            </div>
-        </div>
-        <div class="brew-wrapper">
-            <div class="brew-breakdown-container">
-                <div class = 'breakdown-container'>
-                    <h3>Breakdown</h3>
-                    <img src="img/icon/kettle-1.png" alt="coffee kettle for pour over" width='120' height='120'>
-                </div>
-                <div class='line-breakdown-container'>
-                    <div class="line-flex">
-                        <div class="line-breakdown">
-                            <span class="brew-variable-text"> Brew water: </span>
-                            <span class="units" id="brewSize"> </span>
-                        </div>
-                        <div class="line-breakdown">
-                            <span class="brew-variable-text">Brew time : </span>
-                            <span class="units">3:30</span>
-                            
-                        </div>
-                        <div class="line-breakdown">
-                            <span class="brew-variable-text">Grind size: </span>
-                            <span class="units">medium fine</span>
-                        </div>
-                        <div class="line-breakdown">
-                            <span class="brew-variable-text">Temperature: </span>
-                            <span class="units">the hotter, the better (especially with lighter roasts)</span>
-                        </div>
-                    </div>
-                </div>
-                
     
-                <div class="brew-instruction-line">
-                    <span class = "brew-time">0:00</span>
-                    <span class="brew-line">For bloom add: </span>
-                    <span class="brew-line" id="bloom"></span>
-                    <span class="brew-line" >and wait 30s to 45s.</span>
-                    <span class = brew-total id="bloom-total"></span>
-                </div>
-                <div class="brew-instruction-line">
-                    <span class = "brew-time">0:45</span>
-                    <span class="brew-line">Pour: </span>
-                    <span class="brew-line" id="first-pour"></span>
-                    <span class="brew-line" >in the next 30s. </span>
-                    <span class = brew-total id="first-pour-total"></span>
-                </div>
-                <div class="brew-instruction-line">
-                    <span class = "brew-time">1:15</span>
-                    <span class="brew-line">Pour: </span>
-                    <span class="brew-line" id="second-pour"></span>
-                    <span class="brew-line" >in the next 30s.</span>
-                    <span class = "brew-total" id="second-pour-total"></span>
-                </div>
-                <div class="brew-instruction-line">
-                    <span class = "brew-time">1:45</span>
-                    <span class="brew-line">Stir in each direction, allow V60 to drain a little, give V60 a gentle swirl and let brew drawdown.</span>
-                </div>
-                <div class ='steps-container'>
-                    <div class='brew-variable-text'>Notes:</div>
-                    <ol>
-                        <li>Preheat and rinse your filter in V60.</li>
-                        <li>Add ground coffee and make a small well.</li>
-                        <li>Start a timer and begin the blooming phase with 2X the coffee weight.</li>
-                        <li>Swirl the V60 and wait for 30s to 45s.</li>
-                        <li>Pour 60% of total brew for 30s.</li>
-                        <li>Keep pouring the rest for the water over 30s.</li>
-                        <li>Lightly stir one time in each direction and wait.</li>
-                        <li>Enjoy!</li>
-                    </ol>
-                </div>
+        </div>
     
-            </div>
-        </div>
-
-        
-        
-
-
-    </div>
-
-</template>
-
-<template id="rao">
-    <div class="brew-container">
-        <div class="brew-wrapper">
-            <div class="brew-info-container">
-                <h3 class = 'brew-title'>Scott Rao's</h3>
-                <a href="https://www.youtube.com/watch?v=BjsGf3R9mc0" class="video" target="_blank" rel="noopener noreferrer">
-                    <img src="img/rao.jpg" alt="Rao pour over">
-                    <div class="video-container">
-                        <p class="video-title">Updated manual pourover technique!</p>
-                        <p class ='video-title video-site'>youtube.com</p>
-                    </div>
-                </a>
-                <p class='video-desc'>"Here's an updated manual pourover video. In the video I use a Kalita wave, but the technique can be used with any pourover brewer.  I recommend focusing on the method more than the exact timing of the pours or total brew time.  Different amounts of turbulence (due to different kettles, pouring rate, or pouring height), different grind quality, and different dry coffee doses will all influence optimal brew time. Generally speaking, finer grinds and longer brew times (up to 5:00) are beneficial, provided they do not result in astringency (dryness on the tongue)."</p>
-                
-            </div>
-        </div>
-        <div class="brew-wrapper">
-            <div class="brew-inputs-container">
-                <h3>Pre Brew</h3>
-                <p>The amount of coffee used and with what ratio of coffee to water.</p>
-                <div class="input-container">
+    </template>
+    
+    <template id="rao">
+        <div class="brew-container">
+            <div class="brew-wrapper">
+                <div class="brew-info-container">
+                    <h3 class = 'brew-title'>Scott Rao's</h3>
+                    <a href="https://www.youtube.com/watch?v=BjsGf3R9mc0" class="video" target="_blank" rel="noopener noreferrer">
+                        <img src="img/rao.jpg" alt="Rao pour over">
+                        <div class="video-container">
+                            <p class="video-title">Updated manual pourover technique!</p>
+                            <p class ='video-title video-site'>youtube.com</p>
+                        </div>
+                    </a>
+                    <p class='video-desc'>"Here's an updated manual pourover video. In the video I use a Kalita wave, but the technique can be used with any pourover brewer.  I recommend focusing on the method more than the exact timing of the pours or total brew time.  Different amounts of turbulence (due to different kettles, pouring rate, or pouring height), different grind quality, and different dry coffee doses will all influence optimal brew time. Generally speaking, finer grinds and longer brew times (up to 5:00) are beneficial, provided they do not result in astringency (dryness on the tongue)."</p>
                     
-                    <div class="input">
-                        <div>
-                            <a href="javascript: void(0)" id = 'sub-coffee'>
-                                <img src="img/icon/subtract-24.png" class='plus-icon' width="24" height="24">
+                </div>
+            </div>
+            <div class="brew-wrapper">
+                <div class="brew-inputs-container">
+                    <h3>Pre Brew</h3>
+                    <p>The amount of coffee used and with what ratio of coffee to water.</p>
+                    <div class="input-container">
+                        
+                        <div class="input">
+                            <div>
+                                <a href="javascript: void(0)" id = 'sub-coffee'>
+                                    <img src="img/icon/subtract-24.png" class='plus-icon' width="24" height="24">
+                                    
+                                </a>
+                                <input type="number" value="20" class="brew-inputs" id="coffeeWeight-input">
+                                <a href="javascript: void(0)" id = 'add-coffee'>
+                                    <img src="img/icon/plus-math-24.png" class='plus-icon' width="24" height="24">
+                                </a>
+                            </div>
+                            <label for="coffeeWeight-input">Coffee (g)</label>
+                        </div>
+                        <div class="input">
+                            <div>
+                                <a href="javascript: void(0)" id = 'sub-ratio'>
+                                    <img src="img/icon/subtract-24.png" class='plus-icon' width="24" height="24">
+                                </a>
+                                <input type="number" value="17" class="brew-inputs" id="brewRatio-input" >
+                                <a href="javascript: void(0)" id = 'add-ratio'>
+                                    <img src="img/icon/plus-math-24.png"  class='plus-icon' width="24" height="24">
+                                </a>
+                            </div>
+                            <label for="brewRatio-input">1 Part Coffee to Water Ratio (16-18 recommended)</label>
+                        </div>
+                        
+                        
+                        <div class = "bloom-ratio-select-container" id="container-bloom-select">
+                            <span class="brew-variable-text"> Bloom Water (optional):</span>
+                            <div class = 'bloom-select' id="bloom-select">
+                                <select class="bloom-ratio-select" id="bloom-ratio-select">
+                                    <option value="2" >2</option>
+                                    <option value="2.5">2.5</option>
+                                    <option value="3" selected>3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class = "p-text">
+                            <p>The amount of water for the blooming phase. multiplies with the coffee dosage.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="brew-wrapper">
+                <div class="brew-breakdown-container">
+                    <div class = 'breakdown-container'>
+                        <h3>Breakdown</h3>
+                        <img src="img/icon/kettle-1.png" alt="coffee kettle for pour over" width='120' height='120'>
+                    </div>
+                    <div class='line-breakdown-container'>
+                        <div class="line-flex">
+                            <div class="line-breakdown">
+                                <span class="brew-variable-text"> Brew water: </span>
+                                <span class="units" id="brewSize"> </span>
+                            </div>
+                            <div class="line-breakdown">
+                                <span class="brew-variable-text">Brew time : </span>
+                                <span class="units">4:15 (will vary greatly)</span>
                                 
-                            </a>
-                            <input type="number" value="20" class="brew-inputs"id="coffeeWeight-input">
-                            <a href="javascript: void(0)" id = 'add-coffee'>
-                                <img src="img/icon/plus-math-24.png" class='plus-icon' width="24" height="24">
-                            </a>
+                            </div>
+                            <div class="line-breakdown">
+                                <span class="brew-variable-text">Grind size: </span>
+                                <span class="units">fine</span>
+                            </div>
+                            <div class="line-breakdown">
+                                <span class="brew-variable-text">Temperature: </span>
+                                <span class="units">right off the boil</span>
+                            </div>
                         </div>
-                        <label for="coffeeWeight-input">Coffee (g)</label>
-                    </div>
-                    <div class="input">
-                        <div>
-                            <a href="javascript: void(0)"id = 'sub-ratio'>
-                                <img src="img/icon/subtract-24.png" class='plus-icon'width="24" height="24">
-                            </a>
-                            <input type="number" value="17" class="brew-inputs" id="brewRatio-input" >
-                            <a href="javascript: void(0)"id = 'add-ratio'>
-                                <img src="img/icon/plus-math-24.png"  class='plus-icon' width="24" height="24">
-                            </a>
-                        </div>
-                        <label for="brewRatio-input">1 Part Coffee to Water Ratio (16-18 recommended)</label>
                     </div>
                     
                     
-                    <div class = "bloom-ratio-select-container" id="container-bloom-select">
-                        <span class="brew-variable-text"> Bloom Water (optional):</span>
-                        <div class = 'bloom-select' id="bloom-select">
-                            <select class="bloom-ratio-select" id="bloom-ratio-select">
-                                <option value="2" >2</option>
-                                <option value="2.5">2.5</option>
-                                <option value="3" selected>3</option>
-                            </select>
-                        </div>
+                    <div class="brew-instruction-line">
+                        <span class = "brew-time">0:00</span>
+                        <span class="brew-line">For bloom add: </span>
+                        <span class="brew-line" id="bloom"></span>
+                        <span class="brew-line" >and wait 45s.</span>
+                        <span class = brew-total id="bloom-total"></span>
                     </div>
-                    <div class = "p-text">
-                        <p>The amount of water for the blooming phase. multiplies with the coffee dosage.</p>
+                    <div class="brew-instruction-line">
+                        <span class = "brew-time">0:45</span>
+                        <span class="brew-line">Pour: </span>
+                        <span class="brew-line" id="first-pour"></span>
+                        <span class="brew-line" >in the next 30s. </span>
+                        <span class = brew-total id="first-pour-total"></span>
                     </div>
+                    <div class="brew-instruction-line">
+                        <span class = "brew-time">1:15</span>
+                        <span class="brew-line">Wait around 45s for slurry to drain halfway.</span>
+                    </div>
+                    <div class="brew-instruction-line">
+                        <span class = "brew-time">2:00</span>
+                        <span class="brew-line">Pour: </span>
+                        <span class="brew-line" id="second-pour"></span>
+                        <span class="brew-line" >in the next 30s.</span>
+                        <span class = "brew-total" id="second-pour-total"></span>
+                    </div>
+                    <div class="brew-instruction-line">
+                        <span class = "brew-time">2:30</span>
+                        <span class="brew-line">Spin one time or two, allow pour over to drain.</span>
+                    </div>
+                    <div class ='steps-container'>
+                        <div class='brew-variable-text'>Notes:</div>
+                        <ol>
+                            <li>Pre heat and rinse your filter.</li>
+                            <li>Add ground coffee and gently make a bird's nest.</li>
+                            <li>Start a timer and begin the blooming phase with 3X the coffee weight.</li>
+                            <li>Agressively swirl or use a spoon to dig up the dry areas. Wait for 45s.</li>
+                            <li>Begin first pour and maintain a steady height for 30s.</li>
+                            <li>Wait for slurry to drain halfway for about 45s</li>
+                            <li>Pour the rest for the water over 30s.</li>
+                            <li>Lightly spin one time or two and let the pour over drain.</li>
+                            <li>Enjoy!</li>
+                        </ol>
+                    </div>
+        
                 </div>
             </div>
         </div>
-        <div class="brew-wrapper">
-            <div class="brew-breakdown-container">
-                <div class = 'breakdown-container'>
-                    <h3>Breakdown</h3>
-                    <img src="img/icon/kettle-1.png" alt="coffee kettle for pour over" width='120' height='120'>
-                </div>
-                <div class='line-breakdown-container'>
-                    <div class="line-flex">
-                        <div class="line-breakdown">
-                            <span class="brew-variable-text"> Brew water: </span>
-                            <span class="units" id="brewSize"> </span>
+    </template>
+    <template id="kasuya">
+        <div class="brew-container">
+            <div class="brew-wrapper">
+                <div class="brew-info-container">
+                    <h3 class = 'brew-title'>Tetsu Kasuya 4:6</h3>
+                    <a href="https://www.youtube.com/watch?v=wmCW8xSWGZY" class="video" target="_blank" rel="noopener noreferrer">
+                        <img src="img/kasuya.jpg" alt="Tetsu Kasuya pour over">
+                        <div class="video-container">
+                            <p class="video-title">A Coffee Brewing Theory "4:6 method"</p>
+                            <p class ='video-title video-site'>youtube.com</p>
                         </div>
-                        <div class="line-breakdown">
-                            <span class="brew-variable-text">Brew time : </span>
-                            <span class="units">4:15 (will vary greatly)</span>
-                            
-                        </div>
-                        <div class="line-breakdown">
-                            <span class="brew-variable-text">Grind size: </span>
-                            <span class="units">fine</span>
-                        </div>
-                        <div class="line-breakdown">
-                            <span class="brew-variable-text">Temperature: </span>
-                            <span class="units">right off the boil</span>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                <div class="brew-instruction-line">
-                    <span class = "brew-time">0:00</span>
-                    <span class="brew-line">For bloom add: </span>
-                    <span class="brew-line" id="bloom"></span>
-                    <span class="brew-line" >and wait 45s.</span>
-                    <span class = brew-total id="bloom-total"></span>
-                </div>
-                <div class="brew-instruction-line">
-                    <span class = "brew-time">0:45</span>
-                    <span class="brew-line">Pour: </span>
-                    <span class="brew-line" id="first-pour"></span>
-                    <span class="brew-line" >in the next 30s. </span>
-                    <span class = brew-total id="first-pour-total"></span>
-                </div>
-                <div class="brew-instruction-line">
-                    <span class = "brew-time">1:15</span>
-                    <span class="brew-line">Wait around 45s for slurry to drain halfway.</span>
-                </div>
-                <div class="brew-instruction-line">
-                    <span class = "brew-time">2:00</span>
-                    <span class="brew-line">Pour: </span>
-                    <span class="brew-line" id="second-pour"></span>
-                    <span class="brew-line" >in the next 30s.</span>
-                    <span class = "brew-total" id="second-pour-total"></span>
-                </div>
-                <div class="brew-instruction-line">
-                    <span class = "brew-time">2:30</span>
-                    <span class="brew-line">Spin one time or two, allow pour over to drain.</span>
-                </div>
-                <div class ='steps-container'>
-                    <div class='brew-variable-text'>Notes:</div>
-                    <ol>
-                        <li>Pre heat and rinse your filter.</li>
-                        <li>Add ground coffee and gently make a bird's nest.</li>
-                        <li>Start a timer and begin the blooming phase with 3X the coffee weight.</li>
-                        <li>Agressively swirl or use a spoon to dig up the dry areas. Wait for 45s.</li>
-                        <li>Begin first pour and maintain a steady height for 30s.</li>
-                        <li>Wait for slurry to drain halfway for about 45s</li>
-                        <li>Pour the rest for the water over 30s.</li>
-                        <li>Lightly spin one time or two and let the pour over drain.</li>
-                        <li>Enjoy!</li>
-                    </ol>
-                </div>
-    
-            </div>
-        </div>
-</template>
-
-<template id="kasuya">
-    <div class="brew-container">
-        <div class="brew-wrapper">
-            <div class="brew-info-container">
-                <h3 class = 'brew-title'>Tetsu Kasuya 4:6</h3>
-                <a href="https://www.youtube.com/watch?v=wmCW8xSWGZY" class="video" target="_blank" rel="noopener noreferrer">
-                    <img src="img/kasuya.jpg" alt="Tetsu Kasuya pour over">
-                    <div class="video-container">
-                        <p class="video-title">A Coffee Brewing Theory "4:6 method"</p>
-                        <p class ='video-title video-site'>youtube.com</p>
-                    </div>
-                </a>
-                
-            </div>
-        </div>
-        <div class="brew-wrapper">
-            <div class="brew-inputs-container">
-                <h3>Pre Brew</h3>
-                <div class = 'steps-container'>
-                    <div class='brew-variable-text'>Configuration:</div>
-                    <ol>
-                        <li>Adjust favored taste and strength.</li>
-                        <li>Enter the amount of coffee used and ratio of coffee to water.</li>
-                    </ol>
-                </div>
-                <div class="input-container">
-                    <div class = "bloom-ratio-select-container">
-                        <span class="brew-variable-text"> Sweet/Acidic:</span>
-                        <div class = 'bloom-select' id="taste1">
-                            <select class="bloom-ratio-select" id="taste1-select">
-                                <option value="Balanced" selected>Balanced</option>
-                                <option value="Sweet">Sweet</option>
-                                <option value="Acidic">Acidic</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class = "bloom-ratio-select-container">
-                        <span class="brew-variable-text"> Strong/Weak:</span>
-                        <div class = 'bloom-select' id="taste2">
-                            <select class="bloom-ratio-select" id="taste2-select">
-                                <option value="Balanced" selected>Balanced</option>
-                                <option value="Strong">Strong</option>
-                                <option value="Weak" >Weak</option>
-                            </select>
-                        </div>
-                    </div>
-    
-                    <div class="input">
-                        <div>
-                            <a href="javascript: void(0)" id = 'sub-coffee'>
-                                <img src="img/icon/subtract-24.png" class='plus-icon' width="24" height="24">
-    
-                            </a>
-                            <input type="number" value="20" class="brew-inputs"id="coffeeWeight-input">
-                            <a href="javascript: void(0)" id = 'add-coffee'>
-                                <img src="img/icon/plus-math-24.png" class='plus-icon' width="24" height="24">
-                            </a>
-                        </div>
-                        <label for="coffeeWeight-input">Coffee (g)</label>
-                    </div>
-                    <div class="input">
-                        <div>
-                            <a href="javascript: void(0)"id = 'sub-ratio'>
-                                <img src="img/icon/subtract-24.png" class='plus-icon'width="24" height="24">
-                            </a>
-                            <input type="number" value="15" class="brew-inputs" id="brewRatio-input" >
-                            <a href="javascript: void(0)"id = 'add-ratio'>
-                                <img src="img/icon/plus-math-24.png"  class='plus-icon' width="24" height="24">
-                            </a>
-                        </div>
-                        <label for="brewRatio-input">1 Part Coffee to Water Ratio (15 recommended)</label>
-                    </div>
-            
-    
-                </div>
-            </div>
-        </div>
-        <div class="brew-wrapper">
-            <div class="brew-breakdown-container">
-                <div class = 'breakdown-container'>
-                    <h3>Breakdown</h3>
-                    <img src="img/icon/kettle-1.png" alt="coffee kettle for pour over" width='120' height='120'>
-                </div>
-                <div class='line-breakdown-container'>
-                    <div class="line-flex">
-                        <div class="line-breakdown">
-                            <span class="brew-variable-text"> Brew water: </span>
-                            <span class="units" id="brewSize"> </span>
-                        </div>
-                        <div class="line-breakdown">
-                            <span class="brew-variable-text">Brew time : </span>
-                            <span class="units">3:30 (will vary based on number of pours)</span>
-                            
-                        </div>
-                        <div class="line-breakdown">
-                            <span class="brew-variable-text">Grind size: </span>
-                            <span class="units">Coarse (similar to french press)</span>
-                        </div>
-                        <div class="line-breakdown">
-                            <span class="brew-variable-text">Temperature: </span>
-                            <span class="units">92C or 197F</span>
-                        </div>
-                    </div>
-                </div>
-                
-    
-                <div class="brew-instruction-line">
-                    <span class = "brew-time">0:00</span>
-                    <span class="brew-line">First pour/bloom add: </span>
-                    <span class="brew-line" id="pour-1"></span>
-                    <span class="brew-line" >and wait 45s.</span>
-                    <span class = brew-total id="line1-total"></span>
-                </div>
-                <div class="brew-instruction-line">
-                    <span class = "brew-time">0:45</span>
-                    <span class="brew-line">Second pour add: </span>
-                    <span class="brew-line" id="pour-2"></span>
-                    <span class="brew-line" >and wait 45s.</span>
-                    <span class = brew-total id="line2-total"></span>
-                </div>
-                <div class="brew-instruction-line">
-                    <span class = "brew-time">1:30</span>
-                    <span class="brew-line">Third pour add: </span>
-                    <span class="brew-line" id="pour-3"></span>
-                    <span class="brew-line" >and wait 45s.</span>
-                    <span class = brew-total id="line3-total"></span>
-                </div>
-                <div class="brew-instruction-line">
-                    <span class = "brew-time">2:15</span>
-                    <span class="brew-line">Fourth pour add: </span>
-                    <span class="brew-line" id="pour-4"></span>
-                    <span class="brew-line" >and wait 45s.</span>
-                    <span class = brew-total id="line4-total"></span>
-                </div>
-                <div class="brew-instruction-line">
-                    <span class = "brew-time">3:00</span>
-                    <span class="brew-line">Fifth pour add: </span>
-                    <span class="brew-line" id="pour-5"></span>
-                    <span class="brew-line" >and wait.</span>
-                    <span class = brew-total id="line5-total"></span>
-                </div>
-                <div class="brew-instruction-line">
-                    <span class = "brew-time">3:45</span>
-                    <span class="brew-line">Sixth pour add: </span>
-                    <span class="brew-line" id="pour-6"></span>
-                    <span class="brew-line" >and allow pour over to drain.</span>
-                    <span class = brew-total id="line6-total"></span>
-                </div>
-                <div class="brew-instruction-line" id ='last-brew-line'>
-                    <span class = "brew-time">3:30</span>
-                    <span class="brew-line">Allow pour over to drain.</span>
-                </div>
-                <div class ='steps-container'>
-                    <div class='brew-variable-text'>Notes:</div>
-                    <ol>
-                        <li>Pre heat and rinse your filter.</li>
-                        <li>Add coffee grounds gently.</li>
-                        <li>The first 2 pours are 40% of the total brew water and control the acidity and sweetness of the coffee. </li>
-                        <li>Start a timer and begin the first phase. Wait 45s between each pour.</li>
-                        <li>The second phase is 60% of the total brew water. It controls the strength of the coffee. More pours adds more strength.</li>
-                        <li>Start the second phase and wait 45s between each pour.</li>
-                        <li>Let the pour over drain.</li>
-                        <li>Enjoy!</li>
-                    </ol>
-                </div>
-    
-            </div>
-        </div>
-</template>
-
-<template id="osmotic">
-    <div class="brew-container">
-        <div class="brew-wrapper">
-            <div class="brew-info-container">
-                <h3 class = 'brew-title'>Osmotic Flow</h3>
-                <a href="https://www.youtube.com/watch?v=Az01iNS1xnQ" class="video" target="_blank" rel="noopener noreferrer">
-                    <img src="img/osmotic.jpg" alt="Osmotic flow pour over">
-                    <div class="video-container">
-                        <p class="video-title">Hario V60 Technique: Osmotic Flow</p>
-                        <p class ='video-title video-site'>youtube.com</p>
-                    </div>
-                </a>
-                <p class='video-desc'>"This is one of the easiest and most foolproof ways to brew Hario V60 coffee. Actually, this is an old school Japanese method, but recently it has started to become popular again under the name "Osmotic Flow" due to a blog post by the coffee brand Cafec."</p>
-                
-            </div>
-        </div>
-        <div class="brew-wrapper">
-            <div class="brew-inputs-container">
-                <h3>Pre Brew</h3>
-                <p>The amount of coffee used and with what ratio of coffee to water.</p>
-                <div class="input-container">
+                    </a>
                     
-                    <div class="input">
-                        <div>
-                            <a href="javascript: void(0)" id = 'sub-coffee'>
-                                <img src="img/icon/subtract-24.png" class='plus-icon' width="24" height="24">
+                </div>
+            </div>
+            <div class="brew-wrapper">
+                <div class="brew-inputs-container">
+                    <h3>Pre Brew</h3>
+                    <div class = 'steps-container'>
+                        <div class='brew-variable-text'>Configuration:</div>
+                        <ol>
+                            <li>Adjust favored taste and strength.</li>
+                            <li>Enter the amount of coffee used and ratio of coffee to water.</li>
+                        </ol>
+                    </div>
+                    <div class="input-container">
+                        <div class = "bloom-ratio-select-container">
+                            <span class="brew-variable-text"> Sweet/Acidic:</span>
+                            <div class = 'bloom-select' id="taste1">
+                                <select class="bloom-ratio-select" id="taste1-select">
+                                    <option value="Balanced" selected>Balanced</option>
+                                    <option value="Sweet">Sweet</option>
+                                    <option value="Acidic">Acidic</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class = "bloom-ratio-select-container">
+                            <span class="brew-variable-text"> Strong/Weak:</span>
+                            <div class = 'bloom-select' id="taste2">
+                                <select class="bloom-ratio-select" id="taste2-select">
+                                    <option value="Balanced" selected>Balanced</option>
+                                    <option value="Strong">Strong</option>
+                                    <option value="Weak" >Weak</option>
+                                </select>
+                            </div>
+                        </div>
+        
+                        <div class="input">
+                            <div>
+                                <a href="javascript: void(0)" id = 'sub-coffee'>
+                                    <img src="img/icon/subtract-24.png" class='plus-icon' width="24" height="24">
+        
+                                </a>
+                                <input type="number" value="20" class="brew-inputs" id="coffeeWeight-input">
+                                <a href="javascript: void(0)" id = 'add-coffee'>
+                                    <img src="img/icon/plus-math-24.png" class='plus-icon' width="24" height="24">
+                                </a>
+                            </div>
+                            <label for="coffeeWeight-input">Coffee (g)</label>
+                        </div>
+                        <div class="input">
+                            <div>
+                                <a href="javascript: void(0)" id = 'sub-ratio'>
+                                    <img src="img/icon/subtract-24.png" class='plus-icon' width="24" height="24">
+                                </a>
+                                <input type="number" value="15" class="brew-inputs" id="brewRatio-input" >
+                                <a href="javascript: void(0)" id = 'add-ratio'>
+                                    <img src="img/icon/plus-math-24.png"  class='plus-icon' width="24" height="24">
+                                </a>
+                            </div>
+                            <label for="brewRatio-input">1 Part Coffee to Water Ratio (15 recommended)</label>
+                        </div>
+                
+        
+                    </div>
+                </div>
+            </div>
+            <div class="brew-wrapper">
+                <div class="brew-breakdown-container">
+                    <div class = 'breakdown-container'>
+                        <h3>Breakdown</h3>
+                        <img src="img/icon/kettle-1.png" alt="coffee kettle for pour over" width='120' height='120'>
+                    </div>
+                    <div class='line-breakdown-container'>
+                        <div class="line-flex">
+                            <div class="line-breakdown">
+                                <span class="brew-variable-text"> Brew water: </span>
+                                <span class="units" id="brewSize"> </span>
+                            </div>
+                            <div class="line-breakdown">
+                                <span class="brew-variable-text">Brew time : </span>
+                                <span class="units">3:30 (will vary based on number of pours)</span>
                                 
-                            </a>
-                            <input type="number" value="20" class="brew-inputs"id="coffeeWeight-input">
-                            <a href="javascript: void(0)" id = 'add-coffee'>
-                                <img src="img/icon/plus-math-24.png" class='plus-icon' width="24" height="24">
-                            </a>
+                            </div>
+                            <div class="line-breakdown">
+                                <span class="brew-variable-text">Grind size: </span>
+                                <span class="units">Coarse (similar to french press)</span>
+                            </div>
+                            <div class="line-breakdown">
+                                <span class="brew-variable-text">Temperature: </span>
+                                <span class="units">92C or 197F</span>
+                            </div>
                         </div>
-                        <label for="coffeeWeight-input">Coffee (g)</label>
-                    </div>
-                    <div class="input">
-                        <div>
-                            <a href="javascript: void(0)"id = 'sub-ratio'>
-                                <img src="img/icon/subtract-24.png" class='plus-icon'width="24" height="24">
-                            </a>
-                            <input type="number" value="15" class="brew-inputs" id="brewRatio-input" >
-                            <a href="javascript: void(0)"id = 'add-ratio'>
-                                <img src="img/icon/plus-math-24.png"  class='plus-icon' width="24" height="24">
-                            </a>
-                        </div>
-                        <label for="brewRatio-input">1 Part Coffee to Water Ratio (15 recommended)</label>
                     </div>
                     
-                    
-                    <div class = "bloom-ratio-select-container" id="container-bloom-select">
-                        <span class="brew-variable-text"> Bloom Water (optional):</span>
-                        <div class = 'bloom-select' id="bloom-select">
-                            <select class="bloom-ratio-select" id="bloom-ratio-select">
-                                <option value="2" >2</option>
-                                <option value="2.5"selected >2.5</option>
-                                <option value="3" >3</option>
-                            </select>
-                        </div>
+        
+                    <div class="brew-instruction-line">
+                        <span class = "brew-time">0:00</span>
+                        <span class="brew-line">First pour/bloom add: </span>
+                        <span class="brew-line" id="pour-1"></span>
+                        <span class="brew-line" >and wait 45s.</span>
+                        <span class = brew-total id="line1-total"></span>
                     </div>
-                    <div class = "p-text">
-                        <p>The amount of water for the blooming phase. multiplies with the coffee dosage.</p>
+                    <div class="brew-instruction-line">
+                        <span class = "brew-time">0:45</span>
+                        <span class="brew-line">Second pour add: </span>
+                        <span class="brew-line" id="pour-2"></span>
+                        <span class="brew-line" >and wait 45s.</span>
+                        <span class = brew-total id="line2-total"></span>
                     </div>
+                    <div class="brew-instruction-line">
+                        <span class = "brew-time">1:30</span>
+                        <span class="brew-line">Third pour add: </span>
+                        <span class="brew-line" id="pour-3"></span>
+                        <span class="brew-line" >and wait 45s.</span>
+                        <span class = brew-total id="line3-total"></span>
+                    </div>
+                    <div class="brew-instruction-line">
+                        <span class = "brew-time">2:15</span>
+                        <span class="brew-line">Fourth pour add: </span>
+                        <span class="brew-line" id="pour-4"></span>
+                        <span class="brew-line" >and wait 45s.</span>
+                        <span class = brew-total id="line4-total"></span>
+                    </div>
+                    <div class="brew-instruction-line">
+                        <span class = "brew-time">3:00</span>
+                        <span class="brew-line">Fifth pour add: </span>
+                        <span class="brew-line" id="pour-5"></span>
+                        <span class="brew-line" >and wait.</span>
+                        <span class = brew-total id="line5-total"></span>
+                    </div>
+                    <div class="brew-instruction-line">
+                        <span class = "brew-time">3:45</span>
+                        <span class="brew-line">Sixth pour add: </span>
+                        <span class="brew-line" id="pour-6"></span>
+                        <span class="brew-line" >and allow pour over to drain.</span>
+                        <span class = brew-total id="line6-total"></span>
+                    </div>
+                    <div class="brew-instruction-line" id ='last-brew-line'>
+                        <span class = "brew-time">3:30</span>
+                        <span class="brew-line">Allow pour over to drain.</span>
+                    </div>
+                    <div class ='steps-container'>
+                        <div class='brew-variable-text'>Notes:</div>
+                        <ol>
+                            <li>Pre heat and rinse your filter.</li>
+                            <li>Add coffee grounds gently.</li>
+                            <li>The first 2 pours are 40% of the total brew water and control the acidity and sweetness of the coffee. </li>
+                            <li>Start a timer and begin the first phase. Wait 45s between each pour.</li>
+                            <li>The second phase is 60% of the total brew water. It controls the strength of the coffee. More pours adds more strength.</li>
+                            <li>Start the second phase and wait 45s between each pour.</li>
+                            <li>Let the pour over drain.</li>
+                            <li>Enjoy!</li>
+                        </ol>
+                    </div>
+        
                 </div>
             </div>
         </div>
-        <div class="brew-wrapper">
-            <div class="brew-breakdown-container">
-                <div class = 'breakdown-container'>
-                    <h3>Breakdown</h3>
-                    <img src="img/icon/kettle-1.png" alt="coffee kettle for pour over" width='120' height='120'>
-                </div>
-                <div class='line-breakdown-container'>
-                    <div class="line-flex">
-                        <div class="line-breakdown">
-                            <span class="brew-variable-text"> Brew water: </span>
-                            <span class="units" id="brewSize"> </span>
-                        </div>
-                        <div class="line-breakdown">
-                            <span class="brew-variable-text">Brew time : </span>
-                            <span class="units">3-5 min</span>
-                            
-                        </div>
-                        <div class="line-breakdown">
-                            <span class="brew-variable-text">Grind size: </span>
-                            <span class="units">Coarse</span>
-                        </div>
-                        <div class="line-breakdown">
-                            <span class="brew-variable-text">Temperature: </span>
-                            <span class="units">93C or 199F</span>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                <div class="brew-instruction-line">
-                    <span class = "brew-time">0:00</span>
-                    <span class="brew-line">For bloom add: </span>
-                    <span class="brew-line" id="bloom"></span>
-                    <span class="brew-line" >and wait 40s.</span>
-                    <span class = brew-total id="bloom-total"></span>
-                </div>
-                <div class="brew-instruction-line">
-                    <span class = "brew-time">0:40</span>
-                    <span class="brew-line">Pour: </span>
-                    <span class="brew-line" id="first-pour"></span>
-                    <span class="brew-line" >slowly in the center. </span>
-                    <span class = brew-total id="first-pour-total"></span>
-                </div>
-                <div class="brew-instruction-line">
-                    <span class = "brew-time">2:30</span>
-                    <span class="brew-line">Pour: </span>
-                    <span class="brew-line" id="second-pour"></span>
-                    <span class="brew-line" > slowly in a expending circle.</span>
-                    <span class = "brew-total" id="second-pour-total"></span>
-                </div>
-                <div class="brew-instruction-line">
-                    <span class = "brew-time">3:30</span>
-                    <span class="brew-line">Allow pour over to drain.</span>
-                </div>
-                <div class ='steps-container'>
-                    <div class='brew-variable-text'>Notes:</div>
-                    <ol>
-                        <li>Pre heat and rinse your filter.</li>
-                        <li>Add coffee grounds gently.</li>
-                        <li>Start a timer and begin the blooming phase. Wait 40s</li>
-                        <li>Gently pour slowly in the center 50% of total water brew weight.</li>
-                        <li>Take your time.</li>
-                        <li>Around 50% pour remaining water slowly in an expending circle.</li>
-                        <li>Avoid pouring on the side.</li>
-                        <li>Wait for drawdown.</li>
-                        <li>Enjoy!</li>
-                    </ol>
-                </div>
+    </template>
     
+    <template id="osmotic">
+        <div class="brew-container">
+            <div class="brew-wrapper">
+                <div class="brew-info-container">
+                    <h3 class = 'brew-title'>Osmotic Flow</h3>
+                    <a href="https://www.youtube.com/watch?v=Az01iNS1xnQ" class="video" target="_blank" rel="noopener noreferrer">
+                        <img src="img/osmotic.jpg" alt="Osmotic flow pour over">
+                        <div class="video-container">
+                            <p class="video-title">Hario V60 Technique: Osmotic Flow</p>
+                            <p class ='video-title video-site'>youtube.com</p>
+                        </div>
+                    </a>
+                    <p class='video-desc'>"This is one of the easiest and most foolproof ways to brew Hario V60 coffee. Actually, this is an old school Japanese method, but recently it has started to become popular again under the name "Osmotic Flow" due to a blog post by the coffee brand Cafec."</p>
+                    
+                </div>
+            </div>
+            <div class="brew-wrapper">
+                <div class="brew-inputs-container">
+                    <h3>Pre Brew</h3>
+                    <p>The amount of coffee used and with what ratio of coffee to water.</p>
+                    <div class="input-container">
+                        
+                        <div class="input">
+                            <div>
+                                <a href="javascript: void(0)" id = 'sub-coffee'>
+                                    <img src="img/icon/subtract-24.png" class='plus-icon' width="24" height="24">
+                                    
+                                </a>
+                                <input type="number" value="20" class="brew-inputs" id="coffeeWeight-input">
+                                <a href="javascript: void(0)" id = 'add-coffee'>
+                                    <img src="img/icon/plus-math-24.png" class='plus-icon' width="24" height="24">
+                                </a>
+                            </div>
+                            <label for="coffeeWeight-input">Coffee (g)</label>
+                        </div>
+                        <div class="input">
+                            <div>
+                                <a href="javascript: void(0)" id = 'sub-ratio'>
+                                    <img src="img/icon/subtract-24.png" class='plus-icon' width="24" height="24">
+                                </a>
+                                <input type="number" value="15" class="brew-inputs" id="brewRatio-input" >
+                                <a href="javascript: void(0)" id = 'add-ratio'>
+                                    <img src="img/icon/plus-math-24.png"  class='plus-icon' width="24" height="24">
+                                </a>
+                            </div>
+                            <label for="brewRatio-input">1 Part Coffee to Water Ratio (15 recommended)</label>
+                        </div>
+                        
+                        
+                        <div class = "bloom-ratio-select-container" id="container-bloom-select">
+                            <span class="brew-variable-text"> Bloom Water (optional):</span>
+                            <div class = 'bloom-select' id="bloom-select">
+                                <select class="bloom-ratio-select" id="bloom-ratio-select">
+                                    <option value="2" >2</option>
+                                    <option value="2.5" selected>2.5</option>
+                                    <option value="3" >3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class = "p-text">
+                            <p>The amount of water for the blooming phase. multiplies with the coffee dosage.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="brew-wrapper">
+                <div class="brew-breakdown-container">
+                    <div class = 'breakdown-container'>
+                        <h3>Breakdown</h3>
+                        <img src="img/icon/kettle-1.png" alt="coffee kettle for pour over" width='120' height='120'>
+                    </div>
+                    <div class='line-breakdown-container'>
+                        <div class="line-flex">
+                            <div class="line-breakdown">
+                                <span class="brew-variable-text"> Brew water: </span>
+                                <span class="units" id="brewSize"> </span>
+                            </div>
+                            <div class="line-breakdown">
+                                <span class="brew-variable-text">Brew time : </span>
+                                <span class="units">3-5 min</span>
+                                
+                            </div>
+                            <div class="line-breakdown">
+                                <span class="brew-variable-text">Grind size: </span>
+                                <span class="units">Coarse</span>
+                            </div>
+                            <div class="line-breakdown">
+                                <span class="brew-variable-text">Temperature: </span>
+                                <span class="units">93C or 199F</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="brew-instruction-line">
+                        <span class = "brew-time">0:00</span>
+                        <span class="brew-line">For bloom add: </span>
+                        <span class="brew-line" id="bloom"></span>
+                        <span class="brew-line" >and wait 40s.</span>
+                        <span class = brew-total id="bloom-total"></span>
+                    </div>
+                    <div class="brew-instruction-line">
+                        <span class = "brew-time">0:40</span>
+                        <span class="brew-line">Pour: </span>
+                        <span class="brew-line" id="first-pour"></span>
+                        <span class="brew-line" >slowly in the center. </span>
+                        <span class = brew-total id="first-pour-total"></span>
+                    </div>
+                    <div class="brew-instruction-line">
+                        <span class = "brew-time">2:30</span>
+                        <span class="brew-line">Pour: </span>
+                        <span class="brew-line" id="second-pour"></span>
+                        <span class="brew-line" > slowly in a expending circle.</span>
+                        <span class = "brew-total" id="second-pour-total"></span>
+                    </div>
+                    <div class="brew-instruction-line">
+                        <span class = "brew-time">3:30</span>
+                        <span class="brew-line">Allow pour over to drain.</span>
+                    </div>
+                    <div class ='steps-container'>
+                        <div class='brew-variable-text'>Notes:</div>
+                        <ol>
+                            <li>Pre heat and rinse your filter.</li>
+                            <li>Add coffee grounds gently.</li>
+                            <li>Start a timer and begin the blooming phase. Wait 40s</li>
+                            <li>Gently pour slowly in the center 50% of total water brew weight.</li>
+                            <li>Take your time.</li>
+                            <li>Around 50% pour remaining water slowly in an expending circle.</li>
+                            <li>Avoid pouring on the side.</li>
+                            <li>Wait for drawdown.</li>
+                            <li>Enjoy!</li>
+                        </ol>
+                    </div>
+        
+                </div>
             </div>
         </div>
-</template>
-<template id = "info-template">
-    <div class = "postbrew-container ">
-        <h3>How was the cup ?</h3>
-        <p>The coffee compass helps brew a better cup.</p>
-        <div>
-            <img src="img/Compass.jpg" alt="coffee compass to evalute a brew, made by baristahustle">
-        </div>
-        <a href="https://www.baristahustle.com/blog/coffee-compass/">baristahustle.com</a>
-    </div>
-</template>
-<template id = "timertemplate">
-        <div class="brew-variable-text">Timer</div>
-        <div class = "timer-box-container">
-            <div class = time>00 : 00</div>
-            <div class="timer-button">
-                <button class="start-stop">Start</button>
-                <button class="reset">Reset</button>
+    </template>
+    <template id = "info-template">
+        <div class = "postbrew-container ">
+            <h3>How was the cup ?</h3>
+            <p>The coffee compass helps brew a better cup.</p>
+            <div>
+                <img src="img/Compass.jpg" alt="coffee compass to evalute a brew, made by baristahustle">
             </div>
+            <a href="https://www.baristahustle.com/blog/coffee-compass/">baristahustle.com</a>
         </div>
-</template>
+    </template>
+    <template id = "timertemplate">
+            <div class="brew-variable-text">Timer</div>
+            <div class = "timer-box-container">
+                <div class = time>00 : 00</div>
+                <div class="timer-button">
+                    <button class="start-stop">Start</button>
+                    <button class="reset">Reset</button>
+                </div>
+            </div>
+    </template>
+</body>
